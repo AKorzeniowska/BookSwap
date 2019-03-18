@@ -7,6 +7,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int TEST = 1;
 
+    public static final int TEST2 = 2;
+
+    //cześć Maciuś
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,5 +18,6 @@ public class MainActivity extends AppCompatActivity {
         //Com mw1213
 
         //com2 mw1213 for err
+        //Com hehe
     }
 }
