@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 cokolwiek 
 
 twoja matka
@@ -5,3 +6,6 @@ twoja matka
 
 Ze starym na plecach
 inna treść tutaj proszę
+=======
+inna treść tutaj proszę
+>>>>>>> Stashed changes
