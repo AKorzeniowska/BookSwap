@@ -11,6 +11,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import swiat.podzielono.bookswap.BrowseActivity;
 import swiat.podzielono.bookswap.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -38,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
-                    Log.d(LoginActivity.class.toString(), "Logged in succesful!");
+                    Log.d(LoginActivity.class.toString(), "Logged in successful!");
                 }
             }
         };
@@ -67,7 +69,10 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Sign In problem", Toast.LENGTH_LONG).show();
                         mPasswordField.setText("");
                     } else {
-                        Toast.makeText(getApplicationContext(), "Succesfully signed in", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Successfully signed in", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this, BrowseActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                     mProgressBar.setVisibility(View.INVISIBLE);
                 }
