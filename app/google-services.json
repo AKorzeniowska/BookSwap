@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "868945146141",
+    "firebase_url": "https://bookswap-9525c.firebaseio.com",
+    "project_id": "bookswap-9525c",
+    "storage_bucket": "bookswap-9525c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868945146141:android:fe1680b4df78fde8",
+        "android_client_info": {
+          "package_name": "swiat.podzielono.bookswap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868945146141-h6kvqpcf77f1fpo0t9d0j00rhkv6vr9d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "swiat.podzielono.bookswap",
+            "certificate_hash": "492fec4be026b41fb5f9769ba81f3a6ce6a14899"
+          }
+        },
+        {
+          "client_id": "868945146141-is1h4sa2mci17kvs3lvgjd2s6q3vv1ln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB69g3lLiNhT4xxBabpdp-wgXPEtIFnLF8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868945146141-is1h4sa2mci17kvs3lvgjd2s6q3vv1ln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
