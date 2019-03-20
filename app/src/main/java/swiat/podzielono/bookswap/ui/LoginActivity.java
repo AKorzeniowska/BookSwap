@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Sign In problem", Toast.LENGTH_LONG).show();
                         mPasswordField.setText("");
                     } else {
-                        Toast.makeText(getApplicationContext(), "Succesfully signed in", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Successfully signed in", Toast.LENGTH_LONG).show();
                     }
                     mProgressBar.setVisibility(View.INVISIBLE);
                 }
