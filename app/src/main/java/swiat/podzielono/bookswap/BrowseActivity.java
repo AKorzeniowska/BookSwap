@@ -36,18 +36,21 @@ public class BrowseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        retreiveData();
+        retrieveData();
 
     }
 
-    protected void retreiveData(){
-        mDatabaseReference.child("books").addValueEventListener(new ValueEventListener() {
+    protected void retrieveData(){
+        mDatabaseReference.child("owners").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Iterable <DataSnapshot> books = dataSnapshot.getChildren();
-                for (DataSnapshot book : books){
-                    BookObject currentBook = book.getValue(BookObject.class);
-                    booksList.add(currentBook);
+                Iterable <DataSnapshot> users = dataSnapshot.getChildren();
+                for (DataSnapshot user : users){
+                    Iterable<DataSnapshot> books = user.getChildren();
+                    for (DataSnapshot book : books) {
+                        BookObject currentBook = book.getValue(BookObject.class);
+                        booksList.add(currentBook);
+                    }
                 }
             }
 
@@ -57,4 +60,5 @@ public class BrowseActivity extends AppCompatActivity {
             }
         });
     }
+
 }
