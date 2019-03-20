@@ -55,6 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner_BookGenre"
         tools:srcCompat="@tools:sample/avatars" />
 
+
     <Spinner
         android:id="@+id/spinner_BookCondition"
         android:layout_width="113dp"
