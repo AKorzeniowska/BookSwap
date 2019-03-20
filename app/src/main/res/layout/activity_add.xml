@@ -73,12 +73,12 @@
         android:id="@+id/editText_BookPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/book_price"
         android:inputType="numberDecimal"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editText_BookAuthor"
         app:layout_constraintTop_toBottomOf="@+id/spinner_BookGenre" />
 
     <EditText
