@@ -10,11 +10,11 @@
         android:id="@+id/button_BookImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/book_chooseImage"
-        app:layout_constraintStart_toStartOf="@+id/editText_BookPrice"
-        app:layout_constraintTop_toBottomOf="@+id/editText_BookPrice" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_BookGenre" />
 
     <EditText
         android:id="@+id/editText_BookTitle"
@@ -41,13 +41,12 @@
 
     <ImageView
         android:id="@+id/ImageView_BookImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_BookImage"
-        app:layout_constraintTop_toTopOf="@+id/button_BookImage"
+        android:layout_width="134dp"
+        android:layout_height="137dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/spinner_BookCondition"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_BookGenre"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Spinner
@@ -55,58 +54,57 @@
         android:layout_width="113dp"
         android:layout_height="20dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_ConditionText"
-        app:layout_constraintStart_toEndOf="@+id/textView_ConditionText"
-        app:layout_constraintTop_toTopOf="@+id/textView_ConditionText" />
+        app:layout_constraintBottom_toBottomOf="@+id/condition_text"
+        app:layout_constraintStart_toEndOf="@+id/condition_text"
+        app:layout_constraintTop_toTopOf="@+id/condition_text" />
 
     <TextView
-        android:id="@+id/textView_ConditionText"
+        android:id="@+id/condition_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:text="@string/book_condition"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/editText_BookPrice"
+        app:layout_constraintStart_toStartOf="@+id/button_BookImage"
         app:layout_constraintTop_toBottomOf="@+id/button_BookImage" />
 
     <EditText
         android:id="@+id/editText_BookPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_width="144dp"
+        android:layout_height="46dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/book_price"
         android:inputType="numberDecimal"
-        app:layout_constraintStart_toStartOf="@+id/editText_BookAuthor"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_BookGenre" />
+        app:layout_constraintStart_toStartOf="@+id/editText_BookEdition"
+        app:layout_constraintTop_toBottomOf="@+id/editText_BookEdition" />
 
     <EditText
         android:id="@+id/editText_BookDescription"
-        android:layout_width="292dp"
-        android:layout_height="110dp"
+        android:layout_width="329dp"
+        android:layout_height="75dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/book_description"
         android:inputType="textMultiLine"
-        app:layout_constraintStart_toStartOf="@+id/editText_BookYear"
-        app:layout_constraintTop_toBottomOf="@+id/editText_BookYear" />
+        app:layout_constraintStart_toStartOf="@+id/editText_BookPrice"
+        app:layout_constraintTop_toBottomOf="@+id/editText_BookPrice" />
 
     <EditText
         android:id="@+id/editText_BookPublisher"
         android:layout_width="189dp"
         android:layout_height="42dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/book_publisher"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/textView_ConditionText"
-        app:layout_constraintTop_toBottomOf="@+id/ImageView_BookImage" />
+        app:layout_constraintStart_toStartOf="@+id/condition_text"
+        app:layout_constraintTop_toBottomOf="@+id/condition_text" />
 
     <EditText
         android:id="@+id/editText_BookEdition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="162dp"
+        android:layout_height="43dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/book_edition"
@@ -118,27 +116,26 @@
         android:id="@+id/button_BookAdd"
         android:layout_width="153dp"
         android:layout_height="49dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginTop="24dp"
         android:text="@string/book_add"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_BookDescription"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_BookDescription" />
 
     <EditText
         android:id="@+id/editText_BookYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="175dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="@string/book_year"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/editText_BookEdition"
-        app:layout_constraintTop_toBottomOf="@+id/editText_BookEdition" />
+        app:layout_constraintBottom_toBottomOf="@+id/editText_BookEdition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toEndOf="@+id/editText_BookEdition"
+        app:layout_constraintTop_toTopOf="@+id/editText_BookEdition" />
 
     <Spinner
         android:id="@+id/spinner_BookGenre"
@@ -149,20 +146,17 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.23"
-        app:layout_constraintStart_toEndOf="@+id/textView_GenreText"
+        app:layout_constraintStart_toEndOf="@+id/genre_text"
         app:layout_constraintTop_toBottomOf="@+id/editText_BookAuthor" />
 
     <TextView
-        android:id="@+id/textView_GenreText"
+        android:id="@+id/genre_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/book_genre"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText_BookPrice"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_BookGenre"
         app:layout_constraintStart_toStartOf="@+id/editText_BookAuthor"
-        app:layout_constraintTop_toBottomOf="@+id/editText_BookAuthor"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintTop_toTopOf="@+id/spinner_BookGenre" />
 
 </android.support.constraint.ConstraintLayout>
