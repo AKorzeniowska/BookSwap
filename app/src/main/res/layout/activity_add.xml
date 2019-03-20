@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,10 +16,9 @@
         android:id="@+id/button_BookImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/book_chooseImage"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/genre_text"
         app:layout_constraintTop_toBottomOf="@+id/spinner_BookGenre" />
 
     <EditText
@@ -41,10 +46,11 @@
 
     <ImageView
         android:id="@+id/ImageView_BookImage"
-        android:layout_width="134dp"
-        android:layout_height="137dp"
+        android:layout_width="156dp"
+        android:layout_height="208dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="matrix"
         app:layout_constraintStart_toEndOf="@+id/spinner_BookCondition"
         app:layout_constraintTop_toBottomOf="@+id/spinner_BookGenre"
         tools:srcCompat="@tools:sample/avatars" />
@@ -124,18 +130,15 @@
 
     <EditText
         android:id="@+id/editText_BookYear"
-        android:layout_width="175dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="167dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="@string/book_year"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/editText_BookEdition"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.558"
-        app:layout_constraintStart_toEndOf="@+id/editText_BookEdition"
-        app:layout_constraintTop_toTopOf="@+id/editText_BookEdition" />
+        app:layout_constraintBottom_toBottomOf="@+id/editText_BookPrice"
+        app:layout_constraintStart_toEndOf="@+id/editText_BookPrice"
+        app:layout_constraintTop_toTopOf="@+id/editText_BookPrice" />
 
     <Spinner
         android:id="@+id/spinner_BookGenre"
@@ -160,3 +163,4 @@
         app:layout_constraintTop_toTopOf="@+id/spinner_BookGenre" />
 
 </android.support.constraint.ConstraintLayout>
+</ScrollView>
