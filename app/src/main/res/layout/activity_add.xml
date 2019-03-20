@@ -65,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/book_condition"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/editText_BookPrice"
         app:layout_constraintTop_toBottomOf="@+id/button_BookImage" />
 
@@ -95,7 +96,6 @@
         android:id="@+id/editText_BookPublisher"
         android:layout_width="189dp"
         android:layout_height="42dp"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/book_publisher"
