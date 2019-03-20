@@ -17,10 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity" />
-        <activity android:name=".BrowseActivity"></activity>
-        <activity android:name=".ui.LoginActivity"/>
-        <activity android:name=".ui.RegisterActivity">
-        </activity>
+        <activity android:name=".BrowseActivity" />
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.RegisterActivity" />
+        <activity android:name=".MyBooksActivity" />
     </application>
 
 </manifest>
