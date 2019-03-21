@@ -120,6 +120,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_BookPublisher" />
 
     <Button
+        android:onClick="addBookToDatabase"
         android:id="@+id/button_BookAdd"
         android:layout_width="153dp"
         android:layout_height="49dp"

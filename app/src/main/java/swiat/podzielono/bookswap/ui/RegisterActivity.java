@@ -100,12 +100,13 @@ public class RegisterActivity extends AppCompatActivity {
                 .setDisplayName(username)
 //                .setPhotoUri(URI)
                 .build();
+
         user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 mDatabaseReference.child(username).setValue(0);
                 mProgressBar.setVisibility(View.INVISIBLE);
-                
+
                 Toast.makeText(getApplicationContext(), "Successfully created account", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterActivity.this, BrowseActivity.class);
                 startActivity(intent);

@@ -53,4 +53,12 @@ public class BookObject {
     public void setBook_image(String book_image) {
         this.book_image = book_image;
     }
+
+    public String getAdd_date() {
+        return add_date;
+    }
+
+    public void setAdd_date(String add_date) {
+        this.add_date = add_date;
+    }
 }
