@@ -30,7 +30,7 @@
     <string name="registration_password">Password:</string>
     <string name="registration_password_hint">********</string>
     <string name="registration_confirm_password">Confirm password:</string>
-
+    <string name="title_activity_chat">ChatActivity</string>
 
 
 </resources>

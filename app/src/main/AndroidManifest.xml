@@ -3,6 +3,7 @@
           package="swiat.podzielono.bookswap">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -17,13 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BrowseActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-        />
+        <activity
+                android:name=".BrowseActivity"
+                android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.LoginActivity"/>
         <activity android:name=".ui.RegisterActivity"/>
         <activity android:name=".MyBooksActivity"/>
-        <activity android:name=".AddBookActivity"></activity>
+        <activity android:name=".AddBookActivity"/>
+        <activity
+                android:name=".chat.ChatActivity"
+                android:label="@string/title_activity_chat"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
