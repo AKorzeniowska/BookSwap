@@ -16,18 +16,6 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
-
-        <Button
-            android:id="@+id/open_chat_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:onClick="openChatActivity"
-            android:text="add"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_constant" />
-
         <include
             android:id="@+id/search_constant"
             layout="@layout/search_layout"
@@ -43,10 +31,10 @@
             android:id="@+id/books"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/end"
+            app:layout_constraintBottom_toTopOf="@+id/search_constant"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/open_chat_button" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <include
             android:id="@+id/end"
