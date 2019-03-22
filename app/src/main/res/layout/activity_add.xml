@@ -11,6 +11,7 @@
         android:layout_height="match_parent">
 
         <Button
+            android:onClick="chooseImage"
             android:id="@+id/book_add_image_button"
             android:layout_width="148dp"
             android:layout_height="44dp"
@@ -287,4 +288,5 @@
             app:layout_constraintTop_toTopOf="@+id/book_price_text" />
 
     </android.support.constraint.ConstraintLayout>
+
 </ScrollView>
