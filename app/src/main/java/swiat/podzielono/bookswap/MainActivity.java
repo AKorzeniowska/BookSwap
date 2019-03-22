@@ -23,7 +23,7 @@ import swiat.podzielono.bookswap.ui.RegisterActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final int GOOGLE_SIGN_IN = 2137;
+    private static final int GOOGLE_SIGN_IN = 1;
 
     private Button mLoginButton;
     private Button mRegisterButton;
