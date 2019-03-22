@@ -54,7 +54,9 @@
             android:layout_height="147dp"
             android:layout_marginTop="16dp"
             android:scaleType="matrix"
-            app:layout_constraintStart_toStartOf="@+id/condition_text"
+            app:layout_constraintEnd_toStartOf="@+id/book_image_second"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/condition_text"
             tools:srcCompat="@color/colorButton" />
 
@@ -63,9 +65,10 @@
             android:id="@+id/book_image_second"
             android:layout_width="113dp"
             android:layout_height="147dp"
-            android:layout_marginStart="20dp"
             android:scaleType="matrix"
             app:layout_constraintBottom_toBottomOf="@+id/book_image_first"
+            app:layout_constraintEnd_toStartOf="@+id/book_image_third"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/book_image_first"
             app:layout_constraintTop_toTopOf="@+id/book_image_first"
             app:layout_constraintVertical_bias="1.0"
@@ -75,11 +78,10 @@
             android:id="@+id/book_image_third"
             android:layout_width="113dp"
             android:layout_height="147dp"
-            android:layout_marginStart="16dp"
             android:scaleType="matrix"
             app:layout_constraintBottom_toBottomOf="@+id/book_image_second"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/book_image_second"
             app:layout_constraintTop_toTopOf="@+id/book_image_second"
             tools:srcCompat="@color/colorButton" />
@@ -116,15 +118,15 @@
             app:layout_constraintTop_toBottomOf="@+id/book_edition_text" />
 
         <EditText
-            android:id="@+id/editText_BookDescription"
+            android:id="@+id/book_description_text"
             android:layout_width="0dp"
             android:layout_height="125dp"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/add_book_description"
             android:inputType="textMultiLine"
-            app:layout_constraintEnd_toEndOf="@+id/book_price_text"
-            app:layout_constraintStart_toStartOf="@+id/book_price_text"
+            app:layout_constraintEnd_toEndOf="@+id/book_custom_category_textFill"
+            app:layout_constraintStart_toStartOf="@+id/book_custom_genre"
             app:layout_constraintTop_toBottomOf="@+id/book_add_image_button" />
 
         <EditText
@@ -163,7 +165,7 @@
             android:text="@string/add_book_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_BookDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/book_description_text" />
 
         <Spinner
             android:id="@+id/book_main_category_list"
@@ -253,7 +255,7 @@
         <Button
             android:id="@+id/delete_image_third_button"
             android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:text="@string/add_book_delete"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="@+id/book_image_third"
