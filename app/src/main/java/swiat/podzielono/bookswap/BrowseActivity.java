@@ -43,15 +43,11 @@ public class BrowseActivity extends AppCompatActivity {
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         booksList = new ArrayList<>();
 
-        testTextView = findViewById(R.id.test);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        testTextView.setText(currentUser.getDisplayName());
-        retrieveData();
 
     }
 
