@@ -27,28 +27,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             "smth",":))", "12", "123", "123123", "12312312"
     };
 
-    public ChatAdapter(Context context) {
+    public ChatAdapter(Context context, List<String> mItemList) {
         this.context = context;
         mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("owners");
 
-        mItemList = new ArrayList<>();
-        mDatabaseReference.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                Iterable <DataSnapshot> users = dataSnapshot.getChildren();
-                for (DataSnapshot snap: users) {
-                    String x = snap.getKey();
-                    mItemList.add(x);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        this.mItemList = mItemList;
     }
 
     @NonNull
