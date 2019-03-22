@@ -3,17 +3,22 @@ package swiat.podzielono.bookswap.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.auth.*;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,22 +62,21 @@ public class RegisterActivity extends AppCompatActivity {
         String passwordCheck = mPasswordFieldCheck.getText().toString().trim();
         username = mUsernameField.getText().toString().trim();
 
-        if(email.contains("@") && password.equals(passwordCheck) && password.length() > 6 ) {
+        if (email.contains("@") && password.equals(passwordCheck) && password.length() > 6) {
 
             DatabaseReference ownersReference = FirebaseDatabase.getInstance().getReference().child("owners");
             ownersReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.hasChild(username)){
+                    if (dataSnapshot.hasChild(username)) {
                         Toast.makeText(RegisterActivity.this, "Username already taken", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
+                    } else {
                         mProgressBar.setVisibility(View.VISIBLE);
 
                         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()) {
+                                if (task.isSuccessful()) {
                                     addUserToDatabase();
                                 } else {
                                     Toast.makeText(RegisterActivity.this, "Unsuccessfully created account", Toast.LENGTH_SHORT).show();
@@ -94,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    private void addUserToDatabase(){
+    private void addUserToDatabase() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                 .setDisplayName(username)
