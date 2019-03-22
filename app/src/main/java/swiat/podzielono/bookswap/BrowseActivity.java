@@ -22,6 +22,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
+import swiat.podzielono.bookswap.chat.ChatActivity;
 import swiat.podzielono.bookswap.data.BookObject;
 
 public class BrowseActivity extends AppCompatActivity {
@@ -80,4 +81,8 @@ public class BrowseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openChatActivity(View view) {
+        Intent intent = new Intent(this, ChatActivity.class);
+        startActivity(intent);
+    }
 }
