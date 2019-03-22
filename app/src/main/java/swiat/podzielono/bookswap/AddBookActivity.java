@@ -30,8 +30,10 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -49,8 +51,8 @@ public class AddBookActivity extends AppCompatActivity {
     private StorageReference mStorageReference;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 1;
-    ImageView mImageView;
-
+    private ImageView mImageView;
+    List<Uri> imageUri = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +71,7 @@ public class AddBookActivity extends AppCompatActivity {
         mStorageReference = FirebaseStorage.getInstance().getReference();
     }
 
-    public void addBookToDatabase (View view){
-
-        uploadImage();
+    private void addBookToDatabase (){
         String bookAuthor = mBookAuthor.getText().toString().trim();
         String bookTitle = mBookTitle.getText().toString().trim();
         String bookPrice = mBookPrice.getText().toString().trim();
@@ -79,7 +79,9 @@ public class AddBookActivity extends AppCompatActivity {
 
         final String hashcode = mDatabaseBookReference.push().getKey();
 
-        BookObject bookToAdd = new BookObject(bookTitle, bookAuthor, null, null, null, null, null, currentUser, null, bookPrice, null, null, null, null, currentDate);
+        String uri = null;
+        if (!imageUri.isEmpty())  { uri = imageUri.get(0).toString(); }
+        BookObject bookToAdd = new BookObject(bookTitle, bookAuthor, null, null, null, null, null, currentUser, null, bookPrice, uri, null, null, null, currentDate);
 
         mDatabaseBookReference.child(hashcode).setValue(bookToAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -124,7 +126,7 @@ public class AddBookActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
 
-    private void uploadImage() {
+    public void uploadImage(View view) {
 
         if(filePath != null)
         {
@@ -132,19 +134,24 @@ public class AddBookActivity extends AppCompatActivity {
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            StorageReference ref = mStorageReference.child("images/"+ UUID.randomUUID().toString());
+            final StorageReference ref = mStorageReference.child("images/"+ UUID.randomUUID().toString());
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            progressDialog.dismiss();
+                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    imageUri.add(uri);
+                                    addBookToDatabase();
+                                }
+                            });
                             Toast.makeText(AddBookActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
                             Toast.makeText(AddBookActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
