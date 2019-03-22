@@ -28,7 +28,8 @@ public class AddBookActivity extends AppCompatActivity {
     private EditText mBookAuthor;
     private EditText mBookTitle;
     private EditText mBookPrice;
-    private DatabaseReference mDatabaseReference;
+    private DatabaseReference mDatabaseUserReference;
+    private DatabaseReference mDatabaseBookReference;
     private String currentUser;
 
 
@@ -44,24 +45,33 @@ public class AddBookActivity extends AppCompatActivity {
         mBookPrice = findViewById(R.id.editText_BookPrice);
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("owners").child(currentUser);
+        mDatabaseUserReference = FirebaseDatabase.getInstance().getReference().child("owners").child(currentUser).child("my books");
+        mDatabaseBookReference = FirebaseDatabase.getInstance().getReference().child("books");
     }
 
     public void addBookToDatabase (View view){
         String bookAuthor = mBookAuthor.getText().toString().trim();
         String bookTitle = mBookTitle.getText().toString().trim();
         String bookPrice = mBookPrice.getText().toString().trim();
-        String currentDate = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(new Date());
 
-        BookObject bookToAdd = new BookObject(bookTitle, bookPrice, "", bookAuthor, currentUser, currentDate);
+        final String hashcode = mDatabaseBookReference.push().getKey();
 
-        mDatabaseReference.push().setValue(bookToAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
+        BookObject bookToAdd = new BookObject(bookTitle, bookAuthor, null, null, null, null, null, currentUser, null, bookPrice, null, null, null, null, currentDate);
+
+        mDatabaseBookReference.child(hashcode).setValue(bookToAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(AddBookActivity.this, "Book has been added!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AddBookActivity.this, MyBooksActivity.class);
-                startActivity(intent);
-                finish();
+
+                mDatabaseUserReference.child(hashcode).setValue(0).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(AddBookActivity.this, "Book has been added!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(AddBookActivity.this, MyBooksActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
             }
         });
     }

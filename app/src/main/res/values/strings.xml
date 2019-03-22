@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">BookSwap</string>
+    <string name="app_icon_description">Icon of the aplication</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="sign_up_button_label">Sign up</string>
     <string name="sing_in_button_label">Sign in</string>
@@ -20,6 +21,14 @@
     <string name="add_book_add">Add</string>
     <string name="add_book_delete">Delete</string>
     // End of add layout strings
+    <string name="registration_username">Your name:</string>
+    <string name="registration_username_hint">John Doe</string>
+    <string name="registration_mail">Your mail:</string>
+    <string name="registration_mail_hint">john.doe@gmail.com</string>
+    <string name="registration_password">Password:</string>
+    <string name="registration_password_hint">********</string>
+    <string name="registration_confirm_password">Confirm password:</string>
+
 
 
 </resources>
