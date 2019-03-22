@@ -40,9 +40,9 @@ public class AddBookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-        mBookAuthor = findViewById(R.id.editText_BookAuthor);
-        mBookTitle = findViewById(R.id.editText_BookTitle);
-        mBookPrice = findViewById(R.id.editText_BookPrice);
+        mBookAuthor = findViewById(R.id.book_author_text);
+        mBookTitle = findViewById(R.id.book_title_text);
+        mBookPrice = findViewById(R.id.book_price_text);
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
         mDatabaseUserReference = FirebaseDatabase.getInstance().getReference().child("owners").child(currentUser).child("my books");

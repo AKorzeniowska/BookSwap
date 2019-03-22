@@ -20,6 +20,7 @@
     <string name="add_book_description">Description and additional information</string>
     <string name="add_book_add">Add</string>
     <string name="add_book_delete">Delete</string>
+    <string name="book_image_description">Image of the book</string>
     // End of add layout strings
     <string name="registration_username">Your name:</string>
     <string name="registration_username_hint">John Doe</string>

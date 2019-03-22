@@ -92,7 +92,7 @@
             app:layout_constraintEnd_toEndOf="@+id/book_custom_category_textFill"
             app:layout_constraintHorizontal_bias="0.465"
             app:layout_constraintStart_toStartOf="@+id/book_custom_category_textFill"
-            app:layout_constraintTop_toBottomOf="@+id/editText_BookPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/book_price_text" />
 
         <TextView
             android:id="@+id/condition_text"
@@ -101,19 +101,19 @@
             android:text="@string/add_book_condition"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/spinner_BookCondition"
-            app:layout_constraintStart_toStartOf="@+id/editText_BookPrice"
+            app:layout_constraintStart_toStartOf="@+id/book_price_text"
             app:layout_constraintTop_toTopOf="@+id/spinner_BookCondition" />
 
         <EditText
-            android:id="@+id/editText_BookPrice"
+            android:id="@+id/book_price_text"
             android:layout_width="144dp"
             android:layout_height="41dp"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/add_book_price"
             android:inputType="numberDecimal"
-            app:layout_constraintStart_toStartOf="@+id/editText_BookEdition"
-            app:layout_constraintTop_toBottomOf="@+id/editText_BookEdition" />
+            app:layout_constraintStart_toStartOf="@+id/book_edition_text"
+            app:layout_constraintTop_toBottomOf="@+id/book_edition_text" />
 
         <EditText
             android:id="@+id/editText_BookDescription"
@@ -123,12 +123,12 @@
             android:ems="10"
             android:hint="@string/add_book_description"
             android:inputType="textMultiLine"
-            app:layout_constraintEnd_toEndOf="@+id/editText_BookPrice"
-            app:layout_constraintStart_toStartOf="@+id/editText_BookPrice"
+            app:layout_constraintEnd_toEndOf="@+id/book_price_text"
+            app:layout_constraintStart_toStartOf="@+id/book_price_text"
             app:layout_constraintTop_toBottomOf="@+id/book_add_image_button" />
 
         <EditText
-            android:id="@+id/editText_BookPublisher"
+            android:id="@+id/book_publisher_text"
             android:layout_width="wrap_content"
             android:layout_height="42dp"
             android:layout_marginTop="32dp"
@@ -142,16 +142,16 @@
             app:layout_constraintTop_toBottomOf="@+id/book_custom_category_textFill" />
 
         <EditText
-            android:id="@+id/editText_BookEdition"
+            android:id="@+id/book_edition_text"
             android:layout_width="0dp"
             android:layout_height="42dp"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/add_book_edition"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/editText_BookPublisher"
-            app:layout_constraintStart_toStartOf="@+id/editText_BookPublisher"
-            app:layout_constraintTop_toBottomOf="@+id/editText_BookPublisher" />
+            app:layout_constraintEnd_toEndOf="@+id/book_publisher_text"
+            app:layout_constraintStart_toStartOf="@+id/book_publisher_text"
+            app:layout_constraintTop_toBottomOf="@+id/book_publisher_text" />
 
         <Button
             android:id="@+id/button_BookAdd"
@@ -272,17 +272,17 @@
             app:layout_constraintTop_toTopOf="@+id/delete_image_second_button" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/book_year_text"
             android:layout_width="188dp"
             android:layout_height="0dp"
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="@string/add_book_year"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="@+id/editText_BookPrice"
+            app:layout_constraintBottom_toBottomOf="@+id/book_price_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editText_BookPrice"
-            app:layout_constraintTop_toTopOf="@+id/editText_BookPrice" />
+            app:layout_constraintStart_toEndOf="@+id/book_price_text"
+            app:layout_constraintTop_toTopOf="@+id/book_price_text" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
