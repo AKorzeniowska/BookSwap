@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">BookSwap</string>
-    <string name="app_icon_description">Icon of the aplication</string>
+    <string name="app_icon_description">Icon of the application</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="sign_up_button_label">Sign up</string>
     <string name="sing_in_button_label">Sign in</string>
+    <string name="search_label">Search</string>
     //Add layout strings
     <string name="add_book_title">Title</string>
     <string name="add_book_author">Author</string>
