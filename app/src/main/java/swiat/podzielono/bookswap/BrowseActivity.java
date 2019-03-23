@@ -55,12 +55,10 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
         mNavigationView = findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        listView = (ListView) findViewById(R.id.book_list);
-        ArrayList<BookObject> books = new ArrayList<>();
-        books.add(new BookObject("Książka 1", "Autor1", "wadziux", "10", "https://firebasestorage.googleapis.com/v0/b/bookswap-9525c.appspot.com/o/images%2Fcb9ac3b8-54b2-4f6d-9572-8e177b5fd995?alt=media&token=70666a68-a01e-45e9-96fd-b8ba4d3eab47"));
 
-        bookAdapter = new BookAdapter(this, books);
-        listView.setAdapter(bookAdapter);
+        booksList = new ArrayList<>();
+        listView = (ListView) findViewById(R.id.book_list);
+        retrieveData();
 
         mUsernameTextView = findViewById(R.id.profile_username);
         mEmailTextView = findViewById(R.id.profile_email);
@@ -75,9 +73,6 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
         if (mUser.getPhotoUrl() != null) {
             mProfilImage.setImageURI(mUser.getPhotoUrl());
         }
-
-
-
     }
 
     @Override
@@ -87,22 +82,21 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
     }
 
     protected void retrieveData() {
-        mDatabaseReference.child("owners").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("books").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Iterable<DataSnapshot> users = dataSnapshot.getChildren();
-                for (DataSnapshot user : users) {
-                    Iterable<DataSnapshot> books = user.getChildren();
-                    for (DataSnapshot book : books) {
-                        BookObject currentBook = book.getValue(BookObject.class);
-                        booksList.add(currentBook);
-                    }
+                Iterable<DataSnapshot> books = dataSnapshot.getChildren();
+                for (DataSnapshot book : books) {
+                    BookObject currentBook = book.getValue(BookObject.class);
+                    booksList.add(currentBook);
                 }
+                bookAdapter = new BookAdapter(BrowseActivity.this, booksList);
+                listView.setAdapter(bookAdapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(BrowseActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+
             }
         });
     }
