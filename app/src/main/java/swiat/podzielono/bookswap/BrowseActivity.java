@@ -4,6 +4,11 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,14 +31,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import swiat.podzielono.bookswap.chat.ChatActivity;
-import swiat.podzielono.bookswap.data.BookObject;
+import swiat.podzielono.bookswap.data.*;
 
 public class BrowseActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabaseReference;
     private ArrayList<BookObject> booksList;
+    private BookAdapter bookAdapter;
 
-    private TextView testTextView;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,23 @@ public class BrowseActivity extends AppCompatActivity {
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         booksList = new ArrayList<>();
 
+        recyclerView = (RecyclerView) findViewById(R.id.book_list);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ArrayList<BookObject> books = new ArrayList<>();
+        books.add(new BookObject("Książka 1", "Autor", "wadziux", "10"));
+        books.add(new BookObject("Książka 2", "Autor", "wadziux", "10"));
+        books.add(new BookObject("Książka 3", "Autor", "wadziux", "10"));
+        books.add(new BookObject("Książka 1", "Autor", "wadziux", "10"));
+        books.add(new BookObject("Książka 2", "Autor", "wadziux", "10"));
+        books.add(new BookObject("Książka 3", "Autor", "wadziux", "10"));
+        books.add(new BookObject("Książka 1", "Autor", "wadziux", "10"));
+        books.add(new BookObject("Książka 2", "Autor", "wadziux", "10"));
+        books.add(new BookObject("Książka 3", "Autor", "wadziux", "10"));
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(new BookAdapter(books, recyclerView));
     }
 
     @Override
@@ -74,6 +97,7 @@ public class BrowseActivity extends AppCompatActivity {
             }
         });
     }
+
 
     public void addBookActivityStarter (MenuItem item){
         Intent intent = new Intent(this, AddBookActivity.class);

@@ -57,6 +57,20 @@ public class BookObject {
         this.add_date = add_date;
     }
 
+    /**
+     * small constructor for dummy data
+     * @param title
+     * @param author
+     * @param owner
+     * @param price
+     */
+    public BookObject(String title, String author, String owner, String price){
+        this.title=title;
+        this.author=author;
+        this.owner=owner;
+        this.price=price;
+    }
+
     public String getYear() {
         return year;
     }
