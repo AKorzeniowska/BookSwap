@@ -55,6 +55,7 @@ public class AddBookActivity extends AppCompatActivity {
     private EditText mYear;
     private EditText mPublisher;
     private EditText mCustomCategory;
+    private EditText mEdition;
 
     private ArrayAdapter<String> adapter;
 
@@ -76,6 +77,7 @@ public class AddBookActivity extends AppCompatActivity {
 
     private Spinner mMainCategorySpinner;
     private Spinner mSecondaryCategorySpinner;
+    private Spinner mConditionSpinner;
     List<String> dataForMainSpinner = new ArrayList<>();
     List<String> dataForSecondarySpinner = new ArrayList<>();
 
@@ -91,6 +93,7 @@ public class AddBookActivity extends AppCompatActivity {
         mCustomCategory = findViewById(R.id.book_custom_category_textFill);
         mYear = findViewById(R.id.book_year_text);
         mPublisher = findViewById(R.id.book_publisher_text);
+        mEdition = findViewById(R.id.book_edition_text);
 
         mImageView = findViewById(R.id.book_image_first);
         mImageView2 = findViewById(R.id.book_image_second);
@@ -105,7 +108,7 @@ public class AddBookActivity extends AppCompatActivity {
 
         mMainCategorySpinner = findViewById(R.id.book_main_category_list);
         mSecondaryCategorySpinner = findViewById(R.id.book_secondary_category_list);
-
+        mConditionSpinner = findViewById(R.id.spinner_BookCondition);
 
     }
 
@@ -119,7 +122,14 @@ public class AddBookActivity extends AppCompatActivity {
 
 
     private void spinnerDataSetter() {
-        final boolean[] done = new boolean[1];
+        String [] conditions = getResources().getStringArray(R.array.conditions);
+        ArrayAdapter<String> adapterCond = new ArrayAdapter<>(
+                AddBookActivity.this,
+                android.R.layout.simple_spinner_item,
+                conditions);
+        adapterCond.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mConditionSpinner.setAdapter(adapterCond);
+
         mDatabaseCategoryReference.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -200,6 +210,8 @@ public class AddBookActivity extends AppCompatActivity {
         String description = mDescription.getText().toString().trim();
         String publisher = mPublisher.getText().toString().trim();
         String customCategory = mCustomCategory.getText().toString().trim();
+        String edition = mEdition.getText().toString().trim();
+        String condition = mConditionSpinner.getSelectedItem().toString();
 
         final String hashcode = mDatabaseBookReference.push().getKey();
 
@@ -209,7 +221,7 @@ public class AddBookActivity extends AppCompatActivity {
                 uri[i] = uploadedImageUri.get(i).toString();
             }
         }
-        BookObject bookToAdd = new BookObject(bookTitle, bookAuthor, year, publisher, mainCategory, secondCategory, customCategory, currentUser, null, bookPrice, uploadedImageUri.get(0).toString(), null, null, description, currentDate);
+        BookObject bookToAdd = new BookObject(bookTitle, bookAuthor, year, publisher, mainCategory, secondCategory, customCategory, currentUser, condition, bookPrice, uploadedImageUri.get(0).toString(), null, null, description, currentDate, edition);
 
         mDatabaseBookReference.child(hashcode).setValue(bookToAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -219,7 +231,7 @@ public class AddBookActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(AddBookActivity.this, "Book has been added!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AddBookActivity.this, MyBooksActivity.class);
+                        Intent intent = new Intent(AddBookActivity.this, BrowseActivity.class);
                         startActivity(intent);
                         finish();
                     }
