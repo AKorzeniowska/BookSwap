@@ -61,14 +61,14 @@ public class BookObject {
      * small constructor for dummy data
      * @param title
      * @param author
-     * @param owner
      * @param price
      */
-    public BookObject(String title, String author, String custom_category, String price){
+    public BookObject(String title, String author, String custom_category, String price, String photo1){
         this.title=title;
         this.author=author;
         this.custom_category=custom_category;
         this.price=price;
+        this.photo1=photo1;
     }
 
     public String getYear() {
