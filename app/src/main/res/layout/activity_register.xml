@@ -1,131 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/register_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.RegisterActivity">
+    android:id="@+id/scrollView2"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <include
-        android:id="@+id/login_"
-        layout="@layout/login_header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/register_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.RegisterActivity">
 
-    <EditText
-        android:id="@+id/user_email_field_register"
-        android:layout_width="218dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="@string/registration_mail_hint"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/user_mail_text"
-        app:layout_constraintTop_toBottomOf="@+id/user_mail_text" />
+        <include
+            android:id="@+id/login_"
+            layout="@layout/login_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/user_password_field_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="@string/registration_password_hint"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/user_passworld_text"
-        app:layout_constraintTop_toBottomOf="@+id/user_passworld_text" />
+        <EditText
+            android:id="@+id/user_email_field_register"
+            android:layout_width="218dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="@string/registration_mail_hint"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/user_mail_text"
+            app:layout_constraintTop_toBottomOf="@+id/user_mail_text" />
 
-    <EditText
-        android:id="@+id/user_password_check_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="@string/registration_password_hint"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/confirm_user_password_text"
-        app:layout_constraintTop_toBottomOf="@+id/confirm_user_password_text" />
+        <EditText
+            android:id="@+id/user_password_field_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="@string/registration_password_hint"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="@+id/user_passworld_text"
+            app:layout_constraintTop_toBottomOf="@+id/user_passworld_text" />
 
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rectangle_button_rounded"
-        android:onClick="signUp"
-        android:text="@string/sing_in_button_label"
-        android:textColor="@color/colorFontLight"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.811"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_password_check_register"
-        app:layout_constraintVertical_bias="0.307" />
+        <EditText
+            android:id="@+id/user_password_check_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="@string/registration_password_hint"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="@+id/confirm_user_password_text"
+            app:layout_constraintTop_toBottomOf="@+id/confirm_user_password_text" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar_register"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/rectangle_button_rounded"
+            android:onClick="signUp"
+            android:text="@string/sign_up_button_label"
+            android:textColor="@color/colorFontLight"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.811"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_password_check_register"
+            app:layout_constraintVertical_bias="0.307" />
 
-    <EditText
-        android:id="@+id/username_edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="@string/registration_username_hint"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/username_text"
-        app:layout_constraintTop_toBottomOf="@+id/username_text" />
+        <ProgressBar
+            android:id="@+id/progress_bar_register"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/username_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/registration_username"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.228"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_" />
+        <EditText
+            android:id="@+id/username_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="@string/registration_username_hint"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/username_text"
+            app:layout_constraintTop_toBottomOf="@+id/username_text" />
 
-    <TextView
-        android:id="@+id/user_mail_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/registration_mail"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/username_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/username_edit_text" />
+        <TextView
+            android:id="@+id/username_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/registration_username"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.228"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_" />
 
-    <TextView
-        android:id="@+id/user_passworld_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/registration_password"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/user_email_field_register"
-        app:layout_constraintTop_toBottomOf="@+id/user_email_field_register" />
+        <TextView
+            android:id="@+id/user_mail_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/registration_mail"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/username_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/username_edit_text" />
 
-    <TextView
-        android:id="@+id/confirm_user_password_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/registration_confirm_password"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/user_password_field_register"
-        app:layout_constraintTop_toBottomOf="@+id/user_password_field_register" />
+        <TextView
+            android:id="@+id/user_passworld_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/registration_password"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/user_email_field_register"
+            app:layout_constraintTop_toBottomOf="@+id/user_email_field_register" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/confirm_user_password_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/registration_confirm_password"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/user_password_field_register"
+            app:layout_constraintTop_toBottomOf="@+id/user_password_field_register" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
