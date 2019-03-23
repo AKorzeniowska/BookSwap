@@ -47,6 +47,13 @@
     <string name="book_favourite_button_description">Favourites button</string>
     <string name="interested_button_description">Interested button</string>
     <string name="message_owner_description">Message button</string>
+    <string name="empty_value_label">Empty</string>
+    <string name="username_profile_info">Username</string>
+    <string name="username_email_label">Email</string>
+    <string name="user_university_label">Study</string>
+    <string name="user_study_field_label">Study field</string>
+    <string name="user_residence_label">Residence</string>
+    <string name="user_phone_label">Phone</string>
 
     //Condition of the book
     <string-array name="conditions">
