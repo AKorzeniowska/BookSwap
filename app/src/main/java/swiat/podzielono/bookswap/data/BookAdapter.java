@@ -1,6 +1,8 @@
 package swiat.podzielono.bookswap.data;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -10,6 +12,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +59,12 @@ public class BookAdapter extends ArrayAdapter<BookObject> {
         TextView price = (TextView) listItem.findViewById(R.id.price_text);
         String price_display = "Price: " + currentBook.getPrice();
         price.setText(price_display);
+
+        ImageView photo = (ImageView) listItem.findViewById(R.id.book_image);
+        String photoUrl = currentBook.getPhoto1();
+        if (!photoUrl.equals(""))
+            Picasso.get().load(photoUrl).into(photo);
+
 
         return listItem;
     }
