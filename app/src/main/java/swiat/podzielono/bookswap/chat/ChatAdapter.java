@@ -1,6 +1,8 @@
 package swiat.podzielono.bookswap.chat;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +19,8 @@ import swiat.podzielono.bookswap.data.BookObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static swiat.podzielono.bookswap.chat.SearchAdapter.EXTRA_USERNAME;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
 
@@ -53,13 +57,22 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         return  mItemList.size();
     }
 
-    public class ChatViewHolder extends RecyclerView.ViewHolder {
+    public class ChatViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
 
         private TextView mUserNameTextView;
 
         public ChatViewHolder(@NonNull View itemView) {
             super(itemView);
             mUserNameTextView = itemView.findViewById(R.id.chat_list_element);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            String userName = mUserNameTextView.getText().toString();
+            Intent intent = new Intent(context, ConversationActivity.class);
+            intent.putExtra(EXTRA_USERNAME, userName);
+            context.startActivity(intent);
         }
     }
 }
