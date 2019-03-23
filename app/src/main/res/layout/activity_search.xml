@@ -6,4 +6,97 @@
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
 
+    <Spinner
+        android:id="@+id/book_main_category_list"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="@+id/book_secondary_category_list"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/book_secondary_category_list"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/book_genre_text"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/add_book_main_category"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/book_main_category_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/book_main_category_list"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/book_secondary_genre"
+        android:layout_width="85dp"
+        android:layout_height="27dp"
+        android:text="@string/add_book_secondary_category"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/book_secondary_category_list"
+        app:layout_constraintStart_toStartOf="@+id/book_genre_text"
+        app:layout_constraintTop_toTopOf="@+id/book_secondary_category_list"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Spinner
+        android:id="@+id/book_secondary_category_list"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/book_secondary_genre"
+        app:layout_constraintTop_toBottomOf="@+id/book_main_category_list" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/circle_bg"
+        android:contentDescription="@string/search_label"
+        app:layout_constraintEnd_toEndOf="@+id/book_secondary_category_list"
+        app:layout_constraintTop_toBottomOf="@+id/town_text"
+        app:srcCompat="@drawable/ic_search_black_24dp" />
+
+    <EditText
+        android:id="@+id/book_title_text"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/search_bg"
+        android:ems="10"
+        android:hint="@string/add_book_title"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/book_secondary_genre"
+        app:layout_constraintTop_toBottomOf="@+id/book_secondary_category_list" />
+
+    <EditText
+        android:id="@+id/book_author_text"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/search_bg"
+        android:ems="10"
+        android:hint="@string/add_book_author"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/book_title_text"
+        app:layout_constraintTop_toBottomOf="@+id/book_title_text" />
+
+    <EditText
+        android:id="@+id/town_text"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/search_bg"
+        android:ems="10"
+        android:hint="@string/city_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/book_author_text"
+        app:layout_constraintTop_toBottomOf="@+id/book_author_text" />
+
 </android.support.constraint.ConstraintLayout>

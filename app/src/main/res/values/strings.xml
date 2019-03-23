@@ -54,6 +54,7 @@
     <string name="user_study_field_label">Study field</string>
     <string name="user_residence_label">Residence</string>
     <string name="user_phone_label">Phone</string>
+    <string name="city_hint">City</string>
 
     //Condition of the book
     <string-array name="conditions">

@@ -46,7 +46,7 @@
                 tools:srcCompat="@tools:sample/avatars[8]" />
 
             <TextView
-                android:id="@+id/author_text"
+                android:id="@+id/title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -63,8 +63,8 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/author_text"
-                app:layout_constraintTop_toBottomOf="@+id/author_text"
+                app:layout_constraintStart_toStartOf="@+id/title_text"
+                app:layout_constraintTop_toBottomOf="@+id/title_text"
                 tools:text="@string/add_book_category" />
 
             <TextView
@@ -72,11 +72,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
+                android:text="@string/add_book_description"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                tools:text="@string/add_book_description" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
             <TextView
                 android:id="@+id/description_of_book_text"
@@ -93,11 +92,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
+                android:text="@string/images_for_book"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/description_of_book_text"
-                app:layout_constraintTop_toBottomOf="@+id/description_of_book_text"
-                tools:text="@string/images_for_book" />
+                app:layout_constraintTop_toBottomOf="@+id/description_of_book_text" />
 
             <ImageView
                 android:id="@+id/photo2_image"
