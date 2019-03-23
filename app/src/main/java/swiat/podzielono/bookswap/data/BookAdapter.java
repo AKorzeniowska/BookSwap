@@ -57,7 +57,7 @@ public class BookAdapter extends ArrayAdapter<BookObject> {
         category.setText(currentBook.getCustom_category());
 
         TextView price = (TextView) listItem.findViewById(R.id.price_text);
-        String price_display = "Price: " + currentBook.getPrice();
+        String price_display = "Price: $" + currentBook.getPrice();
         price.setText(price_display);
 
         ImageView photo = (ImageView) listItem.findViewById(R.id.book_image);

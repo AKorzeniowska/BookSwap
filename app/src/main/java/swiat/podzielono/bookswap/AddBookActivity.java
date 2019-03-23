@@ -55,6 +55,7 @@ public class AddBookActivity extends AppCompatActivity {
     private EditText mYear;
     private EditText mPublisher;
     private EditText mCustomCategory;
+    private EditText mEdition;
 
     private ArrayAdapter<String> adapter;
 
@@ -91,6 +92,7 @@ public class AddBookActivity extends AppCompatActivity {
         mCustomCategory = findViewById(R.id.book_custom_category_textFill);
         mYear = findViewById(R.id.book_year_text);
         mPublisher = findViewById(R.id.book_publisher_text);
+        mEdition = findViewById(R.id.book_edition_text);
 
         mImageView = findViewById(R.id.book_image_first);
         mImageView2 = findViewById(R.id.book_image_second);
@@ -200,6 +202,7 @@ public class AddBookActivity extends AppCompatActivity {
         String description = mDescription.getText().toString().trim();
         String publisher = mPublisher.getText().toString().trim();
         String customCategory = mCustomCategory.getText().toString().trim();
+        String edition = mEdition.getText().toString().trim();
 
         final String hashcode = mDatabaseBookReference.push().getKey();
 
@@ -209,7 +212,7 @@ public class AddBookActivity extends AppCompatActivity {
                 uri[i] = uploadedImageUri.get(i).toString();
             }
         }
-        BookObject bookToAdd = new BookObject(bookTitle, bookAuthor, year, publisher, mainCategory, secondCategory, customCategory, currentUser, null, bookPrice, uploadedImageUri.get(0).toString(), null, null, description, currentDate);
+        BookObject bookToAdd = new BookObject(bookTitle, bookAuthor, year, publisher, mainCategory, secondCategory, customCategory, currentUser, null, bookPrice, uploadedImageUri.get(0).toString(), null, null, description, currentDate, edition);
 
         mDatabaseBookReference.child(hashcode).setValue(bookToAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -219,7 +222,7 @@ public class AddBookActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(AddBookActivity.this, "Book has been added!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AddBookActivity.this, MyBooksActivity.class);
+                        Intent intent = new Intent(AddBookActivity.this, BrowseActivity.class);
                         startActivity(intent);
                         finish();
                     }

@@ -3,7 +3,23 @@ package swiat.podzielono.bookswap.data;
 public class BookObject {
     private String title, author, year, publisher, main_category;
     private String secondary_category, custom_category, owner;
-    private String condition, price, photo1, photo2, photo3, description, add_date;
+    private String condition;
+    private String price;
+    private String photo1;
+    private String photo2;
+    private String photo3;
+    private String description;
+    private String add_date;
+
+    public String getEdition() {
+        return edition;
+    }
+
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
+
+    private String edition;
 
     public BookObject() {}
 
@@ -39,7 +55,7 @@ public class BookObject {
         this.author = author;
     }
 
-    public BookObject(String title, String author, String year, String publisher, String main_category, String secondary_category, String custom_category, String owner, String condition, String price, String photo1, String photo2, String photo3, String description, String add_date) {
+    public BookObject(String title, String author, String year, String publisher, String main_category, String secondary_category, String custom_category, String owner, String condition, String price, String photo1, String photo2, String photo3, String description, String add_date, String edition) {
         this.title = title;
         this.author = author;
         this.year = year;
@@ -55,6 +71,7 @@ public class BookObject {
         this.photo3 = photo3;
         this.description = description;
         this.add_date = add_date;
+        this.edition = edition;
     }
 
     /**
