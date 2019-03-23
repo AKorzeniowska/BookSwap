@@ -11,13 +11,14 @@
         android:layout_height="match_parent">
 
         <Button
-            android:onClick="chooseImage"
             android:id="@+id/book_add_image_button"
-            android:layout_width="148dp"
+            android:layout_width="wrap_content"
             android:layout_height="44dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/colorButton"
+            android:onClick="chooseImage"
             android:text="@string/add_book_addImage"
+            android:textColor="@color/colorFontLight"
             app:layout_constraintEnd_toEndOf="@+id/book_secondary_category_list"
             app:layout_constraintStart_toStartOf="@+id/book_image_first"
             app:layout_constraintTop_toBottomOf="@+id/delete_image_second_button" />
@@ -34,14 +35,16 @@
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/search_bg"/>
 
         <EditText
             android:id="@+id/book_author_text"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="42dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/search_bg"
             android:ems="10"
             android:hint="@string/add_book_author"
             android:inputType="textPersonName"
@@ -59,6 +62,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/condition_text"
+            app:srcCompat="@drawable/picture_bg"
             tools:srcCompat="@color/colorButton" />
 
 
@@ -73,6 +77,7 @@
             app:layout_constraintStart_toEndOf="@+id/book_image_first"
             app:layout_constraintTop_toTopOf="@+id/book_image_first"
             app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/picture_bg"
             tools:srcCompat="@color/colorButton" />
 
         <ImageView
@@ -85,6 +90,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/book_image_second"
             app:layout_constraintTop_toTopOf="@+id/book_image_second"
+            app:srcCompat="@drawable/picture_bg"
             tools:srcCompat="@color/colorButton" />
 
         <Spinner
@@ -95,7 +101,8 @@
             app:layout_constraintEnd_toEndOf="@+id/book_custom_category_textFill"
             app:layout_constraintHorizontal_bias="0.465"
             app:layout_constraintStart_toStartOf="@+id/book_custom_category_textFill"
-            app:layout_constraintTop_toBottomOf="@+id/book_price_text" />
+            app:layout_constraintTop_toBottomOf="@+id/book_price_text"
+            />
 
         <TextView
             android:id="@+id/condition_text"
@@ -105,7 +112,7 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/spinner_BookCondition"
             app:layout_constraintStart_toStartOf="@+id/book_price_text"
-            app:layout_constraintTop_toTopOf="@+id/spinner_BookCondition" />
+            app:layout_constraintTop_toTopOf="@+id/spinner_BookCondition"/>
 
         <EditText
             android:id="@+id/book_price_text"
@@ -116,7 +123,8 @@
             android:hint="@string/add_book_price"
             android:inputType="numberDecimal"
             app:layout_constraintStart_toStartOf="@+id/book_edition_text"
-            app:layout_constraintTop_toBottomOf="@+id/book_edition_text" />
+            app:layout_constraintTop_toBottomOf="@+id/book_edition_text"
+            android:background="@drawable/search_bg"/>
 
         <EditText
             android:id="@+id/book_description_text"
@@ -126,9 +134,11 @@
             android:ems="10"
             android:hint="@string/add_book_description"
             android:inputType="textMultiLine"
+            android:gravity="top"
             app:layout_constraintEnd_toEndOf="@+id/book_custom_category_textFill"
             app:layout_constraintStart_toStartOf="@+id/book_custom_genre"
-            app:layout_constraintTop_toBottomOf="@+id/book_add_image_button" />
+            app:layout_constraintTop_toBottomOf="@+id/book_add_image_button"
+            android:background="@drawable/search_bg"/>
 
         <EditText
             android:id="@+id/book_publisher_text"
@@ -142,7 +152,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/book_custom_genre"
-            app:layout_constraintTop_toBottomOf="@+id/book_custom_category_textFill" />
+            app:layout_constraintTop_toBottomOf="@+id/book_custom_category_textFill"
+            android:background="@drawable/search_bg"/>
 
         <EditText
             android:id="@+id/book_edition_text"
@@ -154,7 +165,8 @@
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="@+id/book_publisher_text"
             app:layout_constraintStart_toStartOf="@+id/book_publisher_text"
-            app:layout_constraintTop_toBottomOf="@+id/book_publisher_text" />
+            app:layout_constraintTop_toBottomOf="@+id/book_publisher_text"
+            android:background="@drawable/search_bg"/>
 
         <Button
             android:id="@+id/button_BookAdd"
@@ -164,6 +176,7 @@
             android:backgroundTint="@color/colorButton"
             android:onClick="uploadImage"
             android:text="@string/add_book_add"
+            android:textColor="@color/colorFontLight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/book_description_text" />
@@ -209,7 +222,7 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/book_secondary_genre"
-            app:layout_constraintTop_toBottomOf="@+id/book_main_category_list" />
+            app:layout_constraintTop_toBottomOf="@+id/book_main_category_list"/>
 
         <TextView
             android:id="@+id/book_custom_genre"
@@ -224,9 +237,11 @@
         <EditText
             android:id="@+id/book_custom_category_textFill"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="42dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/search_bg"
             android:ems="10"
+            android:hint=" "
             android:inputType="textPersonName|text"
             app:layout_constraintEnd_toEndOf="@+id/book_secondary_category_list"
             app:layout_constraintStart_toStartOf="@+id/book_secondary_category_list"
@@ -240,7 +255,7 @@
             android:text="@string/add_book_category"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/book_author_text"
-            app:layout_constraintTop_toBottomOf="@+id/book_author_text" />
+            app:layout_constraintTop_toBottomOf="@+id/book_author_text"/>
 
         <Button
             android:id="@+id/delete_image_second_button"
@@ -278,12 +293,13 @@
             android:id="@+id/book_year_text"
             android:layout_width="188dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/search_bg"
             android:ems="10"
             android:hint="@string/add_book_year"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="@+id/book_price_text"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/book_custom_category_textFill"
             app:layout_constraintStart_toEndOf="@+id/book_price_text"
             app:layout_constraintTop_toTopOf="@+id/book_price_text" />
 
