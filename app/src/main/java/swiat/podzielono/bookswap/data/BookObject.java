@@ -64,10 +64,10 @@ public class BookObject {
      * @param owner
      * @param price
      */
-    public BookObject(String title, String author, String owner, String price){
+    public BookObject(String title, String author, String custom_category, String price){
         this.title=title;
         this.author=author;
-        this.owner=owner;
+        this.custom_category=custom_category;
         this.price=price;
     }
 

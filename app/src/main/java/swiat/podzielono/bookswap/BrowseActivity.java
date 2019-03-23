@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,12 +35,11 @@ import swiat.podzielono.bookswap.chat.ChatActivity;
 import swiat.podzielono.bookswap.data.*;
 
 public class BrowseActivity extends AppCompatActivity {
-
-    private DatabaseReference mDatabaseReference;
     private ArrayList<BookObject> booksList;
-    private BookAdapter bookAdapter;
+    private DatabaseReference mDatabaseReference;
 
-    RecyclerView recyclerView;
+    private BookAdapter bookAdapter;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,25 +50,22 @@ public class BrowseActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-        booksList = new ArrayList<>();
 
-        recyclerView = (RecyclerView) findViewById(R.id.book_list);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        listView = (ListView) findViewById(R.id.book_list);
         ArrayList<BookObject> books = new ArrayList<>();
-        books.add(new BookObject("Książka 1", "Autor", "wadziux", "10"));
-        books.add(new BookObject("Książka 2", "Autor", "wadziux", "10"));
-        books.add(new BookObject("Książka 3", "Autor", "wadziux", "10"));
-        books.add(new BookObject("Książka 1", "Autor", "wadziux", "10"));
-        books.add(new BookObject("Książka 2", "Autor", "wadziux", "10"));
-        books.add(new BookObject("Książka 3", "Autor", "wadziux", "10"));
-        books.add(new BookObject("Książka 1", "Autor", "wadziux", "10"));
-        books.add(new BookObject("Książka 2", "Autor", "wadziux", "10"));
-        books.add(new BookObject("Książka 3", "Autor", "wadziux", "10"));
+        books.add(new BookObject("Książka 1", "Autor1", "wadziux", "10"));
+        books.add(new BookObject("Książka 2", "Autor2", "wadziux", "10"));
+        books.add(new BookObject("Książka 3", "Autor3", "wadziux", "10"));
+        books.add(new BookObject("Książka 4", "Autor4", "wadziux", "10"));
+        books.add(new BookObject("Książka 5", "Autor5", "wadziux", "10"));
+        books.add(new BookObject("Książka 6", "Autor6", "wadziux", "10"));
+        books.add(new BookObject("Książka 7", "Autor7", "wadziux", "10"));
+        books.add(new BookObject("Książka 8", "Autor8", "wadziux", "10"));
+        books.add(new BookObject("Książka 9", "Autor9", "wadziux", "10"));
 
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new BookAdapter(books, recyclerView));
+        bookAdapter = new BookAdapter(this,books);
+        listView.setAdapter(bookAdapter);
+
     }
 
     @Override
