@@ -43,7 +43,6 @@ public class ConversationActivity extends AppCompatActivity {
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         final String otherUser = getIntent().getStringExtra(SearchAdapter.EXTRA_USERNAME);
         username = otherUser;
-        mMessageTextView.setText(otherUser);
 
         final String currentUserName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("owners").child(currentUserName).child("chats").child(otherUser);

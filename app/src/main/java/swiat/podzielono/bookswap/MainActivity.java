@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         GoogleSignInOptions gso =
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestIdToken("bookswap-9525c.firebaseapp.com")
+                        .requestIdToken("868945146141-h6kvqpcf77f1fpo0t9d0j00rhkv6vr9d.apps.googleusercontent.com")
                         .requestEmail()
                         .build();
 

@@ -59,7 +59,6 @@ public class SearchUserActivity extends AppCompatActivity {
 
                     }
                 });
-                Toast.makeText(getApplicationContext(), "NIGGA WE MADE IT", Toast.LENGTH_LONG).show();
                 return false;
             }
 
