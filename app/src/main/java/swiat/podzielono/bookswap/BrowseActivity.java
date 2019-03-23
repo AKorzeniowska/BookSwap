@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 import swiat.podzielono.bookswap.chat.ChatActivity;
 import swiat.podzielono.bookswap.data.*;
+import swiat.podzielono.bookswap.ui.ProfileActivity;
 
 public class BrowseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ArrayList<BookObject> booksList;
@@ -134,6 +135,14 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
             startActivity(intent);
             FirebaseAuth.getInstance().signOut();
             finish();
+        } else if (id == R.id.nav_my_books) {
+            Intent intent = new Intent(this, MyBooksActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_favourite_books) {
+            //in future
+        } else if (id == R.id.nav_profile) {
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
         }
         return true;
     }

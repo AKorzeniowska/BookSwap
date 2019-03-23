@@ -72,6 +72,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             String userName = mUserNameTextView.getText().toString();
             Intent intent = new Intent(context, ConversationActivity.class);
             intent.putExtra(EXTRA_USERNAME, userName);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }
     }
