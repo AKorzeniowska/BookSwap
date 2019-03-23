@@ -56,15 +56,7 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
 
         listView = (ListView) findViewById(R.id.book_list);
         ArrayList<BookObject> books = new ArrayList<>();
-        books.add(new BookObject("Książka 1", "Autor1", "wadziux", "10"));
-        books.add(new BookObject("Książka 2", "Autor2", "wadziux", "10"));
-        books.add(new BookObject("Książka 3", "Autor3", "wadziux", "10"));
-        books.add(new BookObject("Książka 4", "Autor4", "wadziux", "10"));
-        books.add(new BookObject("Książka 5", "Autor5", "wadziux", "10"));
-        books.add(new BookObject("Książka 6", "Autor6", "wadziux", "10"));
-        books.add(new BookObject("Książka 7", "Autor7", "wadziux", "10"));
-        books.add(new BookObject("Książka 8", "Autor8", "wadziux", "10"));
-        books.add(new BookObject("Książka 9", "Autor9", "wadziux", "10"));
+        books.add(new BookObject("Książka 1", "Autor1", "wadziux", "10", "https://firebasestorage.googleapis.com/v0/b/bookswap-9525c.appspot.com/o/images%2Fcb9ac3b8-54b2-4f6d-9572-8e177b5fd995?alt=media&token=70666a68-a01e-45e9-96fd-b8ba4d3eab47"));
 
         bookAdapter = new BookAdapter(this, books);
         listView.setAdapter(bookAdapter);
