@@ -48,7 +48,13 @@
     <string name="condition_good">Good</string>
     <string name="condition_fair">Fair</string>
     <string name="condition_poor">Poor</string>
-
+    <string name="username_profile_info">Username</string>
+    <string name="username_email_label">E-mail</string>
+    <string name="user_university_label">Study</string>
+    <string name="user_study_field_label">Study field</string>
+    <string name="user_residence_label">Residence</string>
+    <string name="user_phone_label">Phone</string>
+    <string name="empty_value_label">Empty</string>
 
 
 </resources>
