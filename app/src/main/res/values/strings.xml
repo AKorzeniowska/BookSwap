@@ -48,6 +48,9 @@
     <string name="condition_good">Good</string>
     <string name="condition_fair">Fair</string>
     <string name="condition_poor">Poor</string>
-
-
+    <string name="description_hint">Book description</string>
+    <string name="images_for_book">Images:</string>
+    <string name="book_favourite_button_description">Favourites button</string>
+    <string name="interested_button_description">Interested button</string>
+    <string name="message_owner_description">Message button</string>
 </resources>
