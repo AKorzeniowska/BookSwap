@@ -113,6 +113,6 @@ public class ConversationActivity extends AppCompatActivity {
                 }
             });
         }
-
+        mMessageTextView.setText("");
     }
 }
