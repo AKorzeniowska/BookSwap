@@ -62,6 +62,7 @@ public class ConversationActivity extends AppCompatActivity {
                             }
                             ConversationAdapter adapter = new ConversationAdapter(messages);
                             mConversationRecycleView.setAdapter(adapter);
+                            mConversationRecycleView.scrollToPosition(adapter.getItemCount()-1);
                         }
 
                         @Override
@@ -89,6 +90,7 @@ public class ConversationActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mUser = FirebaseAuth.getInstance().getCurrentUser();
+
     }
 
     public void sendMessage(View view) {
