@@ -38,5 +38,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="sing_out_label">Sign out</string>
+    <string name="my_books_label">My Books</string>
+    <string name="my_favourite_books_label">My favourite books</string>
+    <string name="my_profile_settings">My Profile</string>
+    <string name="communicate_label">Others</string>
 
 </resources>
