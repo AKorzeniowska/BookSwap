@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,7 +29,11 @@ import swiat.podzielono.bookswap.data.*;
 import swiat.podzielono.bookswap.ui.ProfileActivity;
 
 public class BrowseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private final String CHOSEN_BOOK_KEY = "hash";
+
     private ArrayList<BookObject> booksList;
+    private ArrayList<String> hashesList;
     private DatabaseReference mDatabaseReference;
     private FirebaseUser mUser;
 
@@ -56,8 +61,8 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
 
 
         booksList = new ArrayList<>();
+        hashesList = new ArrayList<>();
         listView = (ListView) findViewById(R.id.book_list);
-        retrieveData();
 
         mUsernameTextView = findViewById(R.id.profile_username);
         mEmailTextView = findViewById(R.id.profile_email);
@@ -77,6 +82,8 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
     @Override
     protected void onStart() {
         super.onStart();
+        booksList.clear();
+        retrieveData();
 
     }
 
@@ -88,9 +95,18 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
                 for (DataSnapshot book : books) {
                     BookObject currentBook = book.getValue(BookObject.class);
                     booksList.add(currentBook);
+                    hashesList.add(book.getKey());
                 }
                 bookAdapter = new BookAdapter(BrowseActivity.this, booksList);
                 listView.setAdapter(bookAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(BrowseActivity.this, ChosenBookActivity.class);
+                        intent.putExtra(CHOSEN_BOOK_KEY, hashesList.get(position));
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
