@@ -33,4 +33,6 @@
     <string name="title_activity_chat">ChatActivity</string>
     <string name="top_panel">Top Panel</string>
     <string name="your_book">Your books:</string>
+    <string name="type_message_hint">Type a message...</string>
+    <string name="send_label">Send</string>
 </resources>

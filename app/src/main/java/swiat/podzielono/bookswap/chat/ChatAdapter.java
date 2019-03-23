@@ -25,10 +25,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     private FirebaseUser mFirebaseUser;
     private List<String> mItemList;
 
-    private String[] dummyData = {
-            "smth",":))", "12", "123", "123123", "12312312"
-    };
-
     public ChatAdapter(Context context, List<String> mItemList) {
         this.context = context;
         mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -54,11 +50,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
     @Override
     public int getItemCount() {
-        try {
-            wait(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return  mItemList.size();
     }
 

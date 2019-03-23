@@ -10,10 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.TextView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import android.view.View.OnClickListener;
 import swiat.podzielono.bookswap.R;
@@ -65,7 +61,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ChatViewHo
         public void onClick(View v) {
             String userName = mUserNameTextView.getText().toString();
             Intent intent = new Intent(context, ConversationActivity.class);
-            intent.putExtra(userName, EXTRA_USERNAME);
+            intent.putExtra(EXTRA_USERNAME, userName);
             context.startActivity(intent);
         }
     }

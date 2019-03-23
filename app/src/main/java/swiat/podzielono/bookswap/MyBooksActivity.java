@@ -41,9 +41,11 @@ public class MyBooksActivity extends AppCompatActivity {
         retrieveData();
     }
 
-    protected void retrieveData(){
+    protected void retrieveData() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) { return; }
+        if (user == null) {
+            return;
+        }
 
         String username = user.getDisplayName();
 
@@ -57,7 +59,7 @@ public class MyBooksActivity extends AppCompatActivity {
                     bookHashcodes.add(book.getKey());
                 }
 
-                for (String hash : bookHashcodes){
+                for (String hash : bookHashcodes) {
                     mDatabaseBooksReference.child(hash).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

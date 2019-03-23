@@ -44,7 +44,7 @@ public class ChatActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         list.clear();
-                        for (DataSnapshot snap: dataSnapshot.getChildren()) {
+                        for (DataSnapshot snap : dataSnapshot.getChildren()) {
                             list.add(snap.getKey());
                         }
 
