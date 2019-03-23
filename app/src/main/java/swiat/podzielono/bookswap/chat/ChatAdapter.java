@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
@@ -30,7 +32,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     public ChatAdapter(Context context, List<String> mItemList) {
         this.context = context;
         mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("owners");
+        String username = mFirebaseUser.getDisplayName();
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("owners").child(username);
 
         this.mItemList = mItemList;
     }
@@ -51,6 +54,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
     @Override
     public int getItemCount() {
+        try {
+            wait(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return  mItemList.size();
     }
 
