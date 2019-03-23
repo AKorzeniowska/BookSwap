@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relativeLayout1"
+    android:orientation="vertical"
+    android:background="#F1F1F1">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView2"
@@ -7,6 +16,7 @@
     android:layout_height="fill_parent">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -30,13 +40,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/search_bg"
             android:ems="10"
             android:hint="@string/add_book_title"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/search_bg"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/book_author_text"
@@ -101,8 +111,7 @@
             app:layout_constraintEnd_toEndOf="@+id/book_custom_category_textFill"
             app:layout_constraintHorizontal_bias="0.465"
             app:layout_constraintStart_toStartOf="@+id/book_custom_category_textFill"
-            app:layout_constraintTop_toBottomOf="@+id/book_price_text"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/book_price_text" />
 
         <TextView
             android:id="@+id/condition_text"
@@ -112,33 +121,33 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/spinner_BookCondition"
             app:layout_constraintStart_toStartOf="@+id/book_price_text"
-            app:layout_constraintTop_toTopOf="@+id/spinner_BookCondition"/>
+            app:layout_constraintTop_toTopOf="@+id/spinner_BookCondition" />
 
         <EditText
             android:id="@+id/book_price_text"
             android:layout_width="144dp"
             android:layout_height="41dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/search_bg"
             android:ems="10"
             android:hint="@string/add_book_price"
             android:inputType="numberDecimal"
             app:layout_constraintStart_toStartOf="@+id/book_edition_text"
-            app:layout_constraintTop_toBottomOf="@+id/book_edition_text"
-            android:background="@drawable/search_bg"/>
+            app:layout_constraintTop_toBottomOf="@+id/book_edition_text" />
 
         <EditText
             android:id="@+id/book_description_text"
             android:layout_width="0dp"
             android:layout_height="125dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/search_bg"
             android:ems="10"
+            android:gravity="top"
             android:hint="@string/add_book_description"
             android:inputType="textMultiLine"
-            android:gravity="top"
             app:layout_constraintEnd_toEndOf="@+id/book_custom_category_textFill"
             app:layout_constraintStart_toStartOf="@+id/book_custom_genre"
-            app:layout_constraintTop_toBottomOf="@+id/book_add_image_button"
-            android:background="@drawable/search_bg"/>
+            app:layout_constraintTop_toBottomOf="@+id/book_add_image_button" />
 
         <EditText
             android:id="@+id/book_publisher_text"
@@ -146,27 +155,27 @@
             android:layout_height="42dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
+            android:background="@drawable/search_bg"
             android:ems="10"
             android:hint="@string/add_book_publisher"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/book_custom_genre"
-            app:layout_constraintTop_toBottomOf="@+id/book_custom_category_textFill"
-            android:background="@drawable/search_bg"/>
+            app:layout_constraintTop_toBottomOf="@+id/book_custom_category_textFill" />
 
         <EditText
             android:id="@+id/book_edition_text"
             android:layout_width="0dp"
             android:layout_height="42dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/search_bg"
             android:ems="10"
             android:hint="@string/add_book_edition"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="@+id/book_publisher_text"
             app:layout_constraintStart_toStartOf="@+id/book_publisher_text"
-            app:layout_constraintTop_toBottomOf="@+id/book_publisher_text"
-            android:background="@drawable/search_bg"/>
+            app:layout_constraintTop_toBottomOf="@+id/book_publisher_text" />
 
         <Button
             android:id="@+id/button_BookAdd"
@@ -222,7 +231,7 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/book_secondary_genre"
-            app:layout_constraintTop_toBottomOf="@+id/book_main_category_list"/>
+            app:layout_constraintTop_toBottomOf="@+id/book_main_category_list" />
 
         <TextView
             android:id="@+id/book_custom_genre"
@@ -243,6 +252,7 @@
             android:ems="10"
             android:hint=" "
             android:inputType="textPersonName|text"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="@+id/book_secondary_category_list"
             app:layout_constraintStart_toStartOf="@+id/book_secondary_category_list"
             app:layout_constraintTop_toBottomOf="@+id/book_secondary_category_list" />
@@ -255,7 +265,7 @@
             android:text="@string/add_book_category"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/book_author_text"
-            app:layout_constraintTop_toBottomOf="@+id/book_author_text"/>
+            app:layout_constraintTop_toBottomOf="@+id/book_author_text" />
 
         <Button
             android:id="@+id/delete_image_second_button"
@@ -306,3 +316,11 @@
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_add"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+</RelativeLayout>

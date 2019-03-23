@@ -42,15 +42,20 @@
     <string name="my_favourite_books_label">My favourite books</string>
     <string name="my_profile_settings">My Profile</string>
     <string name="communicate_label">Others</string>
-    //Condotion of the book
-    <string name="condition_as_new">As New</string>
-    <string name="condition_Very_Good">Very Good</string>
-    <string name="condition_good">Good</string>
-    <string name="condition_fair">Fair</string>
-    <string name="condition_poor">Poor</string>
     <string name="description_hint">Book description</string>
     <string name="images_for_book">Images:</string>
     <string name="book_favourite_button_description">Favourites button</string>
     <string name="interested_button_description">Interested button</string>
     <string name="message_owner_description">Message button</string>
+
+    //Condition of the book
+    <string-array name="conditions">
+        <item name="condition_as_new">As New</item>
+        <item name="condition_Very_Good">Very Good</item>
+        <item name="condition_good">Good</item>
+        <item name="condition_fair">Fair</item>
+        <item name="condition_poor">Poor</item>
+    </string-array>
+
+
 </resources>
