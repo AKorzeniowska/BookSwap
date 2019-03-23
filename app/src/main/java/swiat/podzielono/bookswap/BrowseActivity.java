@@ -1,19 +1,15 @@
 package swiat.podzielono.bookswap;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,20 +22,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import swiat.podzielono.bookswap.chat.ChatActivity;
 import swiat.podzielono.bookswap.data.*;
 
-public class BrowseActivity extends AppCompatActivity {
+public class BrowseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ArrayList<BookObject> booksList;
     private DatabaseReference mDatabaseReference;
+    private FirebaseUser mUser;
 
     private BookAdapter bookAdapter;
     private ListView listView;
+    private DrawerLayout mDrawerLayout;
+    private NavigationView mNavigationView;
+    private TextView mUsernameTextView;
+    private TextView mEmailTextView;
+    private ImageView mProfilImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +47,12 @@ public class BrowseActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
 
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+        mNavigationView = findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
 
         listView = (ListView) findViewById(R.id.book_list);
         ArrayList<BookObject> books = new ArrayList<>();
@@ -63,8 +66,24 @@ public class BrowseActivity extends AppCompatActivity {
         books.add(new BookObject("Książka 8", "Autor8", "wadziux", "10"));
         books.add(new BookObject("Książka 9", "Autor9", "wadziux", "10"));
 
-        bookAdapter = new BookAdapter(this,books);
+        bookAdapter = new BookAdapter(this, books);
         listView.setAdapter(bookAdapter);
+
+        mUsernameTextView = findViewById(R.id.profile_username);
+        mEmailTextView = findViewById(R.id.profile_email);
+        mProfilImage = findViewById(R.id.user_profile);
+
+        View view = mNavigationView.getHeaderView(0);
+        mUsernameTextView = (TextView) view.findViewById(R.id.profile_username);
+        mUsernameTextView.setText(mUser.getDisplayName());
+        mEmailTextView = (TextView) view.findViewById(R.id.profile_email);
+        mEmailTextView.setText(mUser.getEmail());
+        mProfilImage = (ImageView) view.findViewById(R.id.user_profile);
+        if (mUser.getPhotoUrl() != null) {
+            mProfilImage.setImageURI(mUser.getPhotoUrl());
+        }
+
+
 
     }
 
@@ -74,12 +93,12 @@ public class BrowseActivity extends AppCompatActivity {
 
     }
 
-    protected void retrieveData(){
+    protected void retrieveData() {
         mDatabaseReference.child("owners").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Iterable <DataSnapshot> users = dataSnapshot.getChildren();
-                for (DataSnapshot user : users){
+                Iterable<DataSnapshot> users = dataSnapshot.getChildren();
+                for (DataSnapshot user : users) {
                     Iterable<DataSnapshot> books = user.getChildren();
                     for (DataSnapshot book : books) {
                         BookObject currentBook = book.getValue(BookObject.class);
@@ -96,7 +115,7 @@ public class BrowseActivity extends AppCompatActivity {
     }
 
 
-    public void addBookActivityStarter (MenuItem item){
+    public void addBookActivityStarter(MenuItem item) {
         Intent intent = new Intent(this, AddBookActivity.class);
         startActivity(intent);
     }
@@ -114,4 +133,16 @@ public class BrowseActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+
+        if (id == R.id.nav_sign_out) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            FirebaseAuth.getInstance().signOut();
+            finish();
+        }
+        return true;
+    }
 }
