@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".BrowseActivity">
+    tools:context=".MyBooksActivity">
     <!--
         tools:openDrawer="start">
     -->
@@ -33,8 +33,7 @@
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/topPanel"
             app:layout_constraintEnd_toEndOf="@+id/topPanel"
-            app:layout_constraintStart_toStartOf="@+id/topPanel"
-            app:layout_constraintTop_toTopOf="@+id/drawer_layout" />
+            app:layout_constraintStart_toStartOf="@+id/topPanel" />
 
         <ListView
             android:id="@+id/book_list"
@@ -44,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/your_books_text"></ListView>
+            app:layout_constraintTop_toBottomOf="@+id/your_books_text"/>
 
         <include
             android:id="@+id/end"

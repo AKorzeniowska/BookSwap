@@ -28,11 +28,12 @@
         <activity
             android:name=".chat.ChatActivity"
             android:label="@string/title_activity_chat"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".chat.SearchUserActivity"></activity>
-        <activity android:name=".chat.ConversationActivity"></activity>
-        <activity android:name=".ui.ProfileActivity"></activity>
-        <activity android:name=".ChosenBookActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".chat.SearchUserActivity" />
+        <activity android:name=".chat.ConversationActivity" />
+        <activity android:name=".ui.ProfileActivity" />
+        <activity android:name=".ChosenBookActivity" />
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>
