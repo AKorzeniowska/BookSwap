@@ -19,17 +19,12 @@ public class ChosenBookActivity extends AppCompatActivity {
     private String bookHash;
     private DatabaseReference mDatabaseReference;
 
-    private TextView textView;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chosen_book);
 
         bookHash = getIntent().getStringExtra(CHOSEN_BOOK_KEY);
-        textView = findViewById(R.id.testTextView);
-        textView.setText("");
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("books");
     }
@@ -45,7 +40,7 @@ public class ChosenBookActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 BookObject chosenBook = dataSnapshot.getValue(BookObject.class);
-                textView.setText(chosenBook.getTitle());
+
             }
 
             @Override
