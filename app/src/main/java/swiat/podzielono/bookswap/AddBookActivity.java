@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -56,6 +57,8 @@ public class AddBookActivity extends AppCompatActivity {
     private EditText mPublisher;
     private EditText mCustomCategory;
     private EditText mEdition;
+
+    private ProgressBar mProgressBar;
 
     private ArrayAdapter<String> adapter;
 
@@ -110,6 +113,7 @@ public class AddBookActivity extends AppCompatActivity {
         mSecondaryCategorySpinner = findViewById(R.id.book_secondary_category_list);
         mConditionSpinner = findViewById(R.id.spinner_BookCondition);
 
+        mProgressBar = findViewById(R.id.progress_bar_add);
     }
 
     @Override
@@ -117,6 +121,7 @@ public class AddBookActivity extends AppCompatActivity {
         super.onStart();
         spinnerDataSetter();
         secondarySpinnerDataSetter();
+        mProgressBar.setVisibility(View.INVISIBLE);
     }
 
 
@@ -230,6 +235,7 @@ public class AddBookActivity extends AppCompatActivity {
                 mDatabaseUserReference.child(hashcode).setValue(0).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        mProgressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(AddBookActivity.this, "Book has been added!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(AddBookActivity.this, BrowseActivity.class);
                         startActivity(intent);
@@ -286,10 +292,11 @@ public class AddBookActivity extends AppCompatActivity {
             return;
         }
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), imageUri.size());
-
     }
 
     public void uploadImage(View view) {
+        mProgressBar.setVisibility(View.VISIBLE);
+
         if (imageUri.isEmpty()) {
             addBookToDatabase();
             return;

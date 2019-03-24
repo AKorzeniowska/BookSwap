@@ -117,13 +117,18 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
     }
 
 
-    public void addBookActivityStarter(MenuItem item) {
+    public void openAddBookActivity(MenuItem item) {
         Intent intent = new Intent(this, AddBookActivity.class);
         startActivity(intent);
     }
 
     public void openChatActivity(MenuItem item) {
         Intent intent = new Intent(this, ChatActivity.class);
+        startActivity(intent);
+    }
+
+    public void openSearchActivity(MenuItem item) {
+        Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
 

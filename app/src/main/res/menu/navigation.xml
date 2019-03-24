@@ -10,13 +10,14 @@
         android:title="Messages"
         app:showAsAction="ifRoom" />
     <item
+        android:onClick="openSearchActivity"
         android:id="@+id/button_search"
         android:enabled="true"
         android:icon="@drawable/ic_search_black_24dp"
         android:title="Search"
         app:showAsAction="ifRoom" />
     <item
-        android:onClick="addBookActivityStarter"
+        android:onClick="openAddBookActivity"
         android:id="@+id/button_add"
         android:enabled="true"
         android:icon="@drawable/ic_add_black_24dp"

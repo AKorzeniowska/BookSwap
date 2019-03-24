@@ -19,6 +19,10 @@ public class ChosenBookActivity extends AppCompatActivity {
     private String bookHash;
     private DatabaseReference mDatabaseReference;
 
+    private TextView mTitle;
+    private TextView mAuthor;
+    private TextView mMainCategory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +44,6 @@ public class ChosenBookActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 BookObject chosenBook = dataSnapshot.getValue(BookObject.class);
-
             }
 
             @Override
