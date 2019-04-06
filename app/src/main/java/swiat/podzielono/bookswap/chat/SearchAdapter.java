@@ -55,7 +55,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ChatViewHo
 
         public ChatViewHolder(@NonNull View itemView) {
             super(itemView);
-            mUserNameTextView = itemView.findViewById(R.id.chat_list_element);
+            mUserNameTextView = itemView.findViewById(R.id.text_message_name);
             itemView.setOnClickListener(this);
         }
 
