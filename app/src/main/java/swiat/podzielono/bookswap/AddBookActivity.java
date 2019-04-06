@@ -41,6 +41,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 import swiat.podzielono.bookswap.data.BookObject;
+import swiat.podzielono.bookswap.exceptions.InvalidInputException;
 import swiat.podzielono.bookswap.utilities.ImageResizer;
 
 public class AddBookActivity extends AppCompatActivity {
@@ -202,9 +203,11 @@ public class AddBookActivity extends AppCompatActivity {
     }
 
     private void addBookToDatabase() {
+
         String bookAuthor = mBookAuthor.getText().toString().trim();
         String bookTitle = mBookTitle.getText().toString().trim();
         String bookPrice = mBookPrice.getText().toString().trim();
+
         String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(new Date());
         String year = mYear.getText().toString().trim();
         String mainCategory = mMainCategorySpinner.getSelectedItem().toString();
@@ -314,12 +317,19 @@ public class AddBookActivity extends AppCompatActivity {
     }
 
     public void uploadImage(View view) {
-        mProgressBar.setVisibility(View.VISIBLE);
+        String bookAuthor = mBookAuthor.getText().toString().trim();
+        String bookTitle = mBookTitle.getText().toString().trim();
+        String bookPrice = mBookPrice.getText().toString().trim();
 
-        if (imageUri.isEmpty()) {
-            addBookToDatabase();
-            return;
-        }
+        try{
+            if (bookAuthor.equals(""))  { throw new InvalidInputException(this, InvalidInputException.NO_AUTHOR_GIVEN); }
+            if (bookTitle.equals(""))   { throw new InvalidInputException(this, InvalidInputException.NO_TITLE_GIVEN);  }
+            if (bookPrice.equals(""))   { throw new InvalidInputException(this, InvalidInputException.NO_PRICE_GIVEN); }
+            if (imageUri.isEmpty())     {throw new InvalidInputException(this, InvalidInputException.NO_PHOTO_UPLOADED); }
+        }   catch (InvalidInputException e) { return; }
+
+
+        mProgressBar.setVisibility(View.VISIBLE);
 
         for (int i=0; i<bitmapList.size(); i++) {
 
