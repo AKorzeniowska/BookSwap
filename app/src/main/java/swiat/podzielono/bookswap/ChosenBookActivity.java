@@ -1,11 +1,20 @@
 package swiat.podzielono.bookswap;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import swiat.podzielono.bookswap.chat.ConversationActivity;
+import swiat.podzielono.bookswap.chat.SearchAdapter;
 import swiat.podzielono.bookswap.data.BookObject;
 
 public class ChosenBookActivity extends AppCompatActivity {
@@ -20,6 +31,7 @@ public class ChosenBookActivity extends AppCompatActivity {
     private final String CHOSEN_BOOK_KEY = "hash";
     private String bookHash;
     private DatabaseReference mDatabaseReference;
+    private DatabaseReference mUserDatabaseReference;
 
     private TextView mTitle;
     private TextView mAuthor;
@@ -35,6 +47,8 @@ public class ChosenBookActivity extends AppCompatActivity {
 
     private TextView mPrice;
 
+    private String owner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +56,7 @@ public class ChosenBookActivity extends AppCompatActivity {
 
         bookHash = getIntent().getStringExtra(CHOSEN_BOOK_KEY);
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("books");
+        mUserDatabaseReference = FirebaseDatabase.getInstance().getReference().child("owners");
 
         mTitle = findViewById(R.id.book_title_text);
         mAuthor = findViewById(R.id.title_text);
@@ -78,6 +93,8 @@ public class ChosenBookActivity extends AppCompatActivity {
                 mAddDate.setText(chosenBook.getAdd_date());
                 mEdition.setText(chosenBook.getEdition());
 
+                owner = chosenBook.getOwner();
+
                 String categories = chosenBook.getMain_category() + ", \n" + chosenBook.getSecondary_category() + ", \n" + chosenBook.getCustom_category();
                 mCategories.setText(categories);
 
@@ -91,5 +108,23 @@ public class ChosenBookActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    public void addToFavorites(View view) {
+        String currentUser = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        mUserDatabaseReference.child(currentUser).child("favorites").child(bookHash).setValue(0).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(ChosenBookActivity.this, "Book has been added to favorites!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void openChat(View view){
+        Intent intent = new Intent(this, ConversationActivity.class);
+        intent.putExtra(SearchAdapter.EXTRA_USERNAME, owner);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
