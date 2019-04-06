@@ -72,6 +72,7 @@
     <string name="title_activity_chosenbook">Chosen book</string>
     <string name="enter_value">Enter value...</string>
     <string name="title_activity_conversation">Conversation activity</string>
+    <string name="title_activity_browse">Browse books activity</string>
 
     //Condition of the book
     <string-array name="conditions">

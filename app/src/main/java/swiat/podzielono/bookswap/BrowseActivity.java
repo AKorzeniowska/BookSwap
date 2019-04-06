@@ -54,6 +54,9 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse);
+        Toolbar toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
+        setSupportActionBar(toolbar1);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
