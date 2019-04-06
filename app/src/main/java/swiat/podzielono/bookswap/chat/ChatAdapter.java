@@ -38,6 +38,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         this.mItemList = mItemList;
     }
 
+    public List<String> getItemList() {
+        return mItemList;
+    }
+
     @NonNull
     @Override
     public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
