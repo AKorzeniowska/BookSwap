@@ -42,6 +42,7 @@ public class ChosenBookActivity extends AppCompatActivity {
     private ImageView mSecondPic;
     private ImageView mThirdPic;
     private TextView mAddDate;
+    private TextView mImagesText;
 
     private TextView mPrice;
 
@@ -69,6 +70,7 @@ public class ChosenBookActivity extends AppCompatActivity {
         mEdition = findViewById(R.id.edition_text);
         mSecondPic = findViewById(R.id.photo2_image);
         mThirdPic = findViewById(R.id.photo3_image);
+        mImagesText = findViewById(R.id.images_text);
     }
 
     @Override
@@ -94,7 +96,7 @@ public class ChosenBookActivity extends AppCompatActivity {
 
                 owner = chosenBook.getOwner();
 
-                String categories = chosenBook.getMain_category() + ", \n" + chosenBook.getSecondary_category() + ", \n" + chosenBook.getCustom_category();
+                String categories = "Main: "+chosenBook.getMain_category() + "\nSecondary: " + chosenBook.getSecondary_category() + "\nCustom: " + chosenBook.getCustom_category();
                 mCategories.setText(categories);
 
                 String photoUrl1 = chosenBook.getPhoto1();
@@ -102,12 +104,23 @@ public class ChosenBookActivity extends AppCompatActivity {
                     Picasso.get().load(photoUrl1).into(mMainPic);
 
                 String photoUrl2 = chosenBook.getPhoto2();
-                if (photoUrl2 != null)
+                if (photoUrl2 != null) {
+                    mSecondPic.setVisibility(View.VISIBLE);
                     Picasso.get().load(photoUrl2).into(mSecondPic);
-
+                    mImagesText.setVisibility(View.VISIBLE);
+                }
+                else
+                    mSecondPic.setVisibility(View.GONE);
                 String photoUrl3 = chosenBook.getPhoto3();
-                if (photoUrl3 != null)
+                if (photoUrl3 != null) {
+                    mThirdPic.setVisibility(View.VISIBLE);
                     Picasso.get().load(photoUrl3).into(mThirdPic);
+                    mImagesText.setVisibility(View.VISIBLE);
+                }
+                else
+                    mThirdPic.setVisibility(View.GONE);
+                if (photoUrl2==null && photoUrl3==null)
+                    mImagesText.setVisibility(View.GONE);
             }
 
             @Override
