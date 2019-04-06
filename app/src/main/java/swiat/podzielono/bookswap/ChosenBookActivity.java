@@ -44,7 +44,6 @@ public class ChosenBookActivity extends AppCompatActivity {
     private ImageView mThirdPic;
     private TextView mAddDate;
     private TextView mImagesText;
-
     private TextView mPrice;
 
     private String owner;
@@ -74,6 +73,7 @@ public class ChosenBookActivity extends AppCompatActivity {
         mSecondPic = findViewById(R.id.price_text_f);
         mThirdPic = findViewById(R.id.photo3_image);
         mImagesText = findViewById(R.id.images_text);
+        mPrice = findViewById(R.id.price_text);
     }
 
     @Override
@@ -96,6 +96,7 @@ public class ChosenBookActivity extends AppCompatActivity {
                 mCondition.setText(chosenBook.getCondition());
                 mAddDate.setText(chosenBook.getAdd_date());
                 mEdition.setText(chosenBook.getEdition());
+                mPrice.setText("$"+chosenBook.getPrice());
 
                 owner = chosenBook.getOwner();
 

@@ -66,8 +66,8 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
         mEmailField = findViewById(R.id.user_email_field_profile_activity);
 
         mUser = FirebaseAuth.getInstance().getCurrentUser();
-        mUsernameField.setText(mUser.getEmail());
-        mEmailField.setText(mUser.getDisplayName());
+        mUsernameField.setText(mUser.getDisplayName());
+        mEmailField.setText(mUser.getEmail());
 
 
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference()
@@ -79,7 +79,19 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        currentDataSetter();
+        FirebaseDatabase.getInstance().getReference().child("owners").child(mUser.getDisplayName()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild("info")){
+                    currentDataSetter();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void currentDataSetter(){
@@ -153,10 +165,15 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
                                     .Builder()
                                     .setPhotoUri(uri)
                                     .build();
-                            mUser.updateProfile(changeRequest);
-                            Intent intent = new Intent(ChangeProfileDataActivity.this, ProfileActivity.class);
-                            startActivity(intent);
-                            finish();
+                            mUser.updateProfile(changeRequest).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Intent intent = new Intent(ChangeProfileDataActivity.this, ProfileActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            });
+
                         }
                     });
                 }
