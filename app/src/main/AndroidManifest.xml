@@ -34,9 +34,10 @@
         <activity android:name=".chat.ConversationActivity" />
         <activity android:name=".ui.ProfileActivity" />
         <activity android:name=".ChosenBookActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".ui.ChangeProfileDataActivity"></activity>
-        <activity android:name=".FavoritesActivity"></activity>
+        <activity android:name=".bookSearch.SearchActivity" />
+        <activity android:name=".ui.ChangeProfileDataActivity" />
+        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".bookSearch.SearchEffectsActivity"></activity>
     </application>
 
 </manifest>
