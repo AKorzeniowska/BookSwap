@@ -22,7 +22,6 @@ import java.util.List;
 public class ChatActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private List<String> list;
     private DatabaseReference mDataBase;
 
     @Override
@@ -32,7 +31,6 @@ public class ChatActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        list = new ArrayList<>();
         mRecyclerView = findViewById(R.id.chat_list);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
@@ -44,7 +42,6 @@ public class ChatActivity extends AppCompatActivity {
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (mRecyclerView.getAdapter() == null) {
                     List<String> list = new ArrayList<>((int)dataSnapshot.getChildrenCount());
                     for (DataSnapshot data: dataSnapshot.getChildren()) {
                         list.add(data.getKey());
@@ -52,7 +49,7 @@ public class ChatActivity extends AppCompatActivity {
 
                     ChatAdapter chatAdapter = new ChatAdapter(getApplicationContext(), list);
                     mRecyclerView.setAdapter(chatAdapter);
-                }
+                    mRecyclerView.findViewHolderForLayoutPosition(list.size() - 1);
             }
 
             @Override
@@ -62,37 +59,6 @@ public class ChatActivity extends AppCompatActivity {
         };
 
         mDataBase.addValueEventListener(valueEventListener);
-
-        mDataBase.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if (mRecyclerView.getAdapter() != null) {
-                    List<String> list = ((ChatAdapter) mRecyclerView.getAdapter()).getItemList();
-                    list.add(dataSnapshot.getKey());
-                    ChatAdapter chatAdapter = new ChatAdapter(getApplicationContext(), list);
-                    mRecyclerView.setAdapter(chatAdapter);
-                }
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -1,64 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.andrloid.com/tools"
     xmlns:tools2="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.andrloid.com/tools"
-    android:background="@color/colorGrey">
+    android:layout_height="70dp"
+    android:background="@color/colorPrimary">
 
     <TextView
         android:id="@+id/price_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
+        android:fontFamily="sans-serif-thin"
+        android:text="Price"
+        android:textColor="@color/colorFontLight"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools2:text="Price?"
+        tools2:text="Price"
         tools:text="@string/add_book_price" />
 
     <ImageButton
-        android:onClick="addToFavorites"
         android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="30dp"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/book_favourite_button_description"
+        android:onClick="addToFavorites"
+        android:title="Search"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
         app:layout_constraintEnd_toStartOf="@+id/imageButton3"
         app:layout_constraintTop_toTopOf="@+id/imageButton3"
-        app:srcCompat="@drawable/ic_favorite"
-        android:background="@android:color/transparent" />
+        app:srcCompat="@drawable/ic_favorite" />
 
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="30dp"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/interested_button_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_star"
-        android:background="@android:color/transparent"/>
+        app:srcCompat="@drawable/ic_star" />
 
     <ImageButton
-        android:onClick="openChat"
         android:id="@+id/imageButton4"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="30dp"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/message_owner_description"
+        android:onClick="openChat"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
         app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintTop_toTopOf="@+id/imageButton2"
-        app:srcCompat="@drawable/ic_message_black_24dp"
-        android:background="@android:color/transparent" />
+        app:srcCompat="@drawable/ic_message_black_24dp" />
 
 </android.support.constraint.ConstraintLayout>

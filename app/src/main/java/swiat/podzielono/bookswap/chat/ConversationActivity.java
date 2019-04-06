@@ -58,7 +58,6 @@ public class ConversationActivity extends AppCompatActivity {
                     database.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (mConversationRecycleView.getAdapter() == null) {
                                 List<Message> messages = new ArrayList<>((int) dataSnapshot.getChildrenCount());
                                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                                     Message message = data.getValue(Message.class);
@@ -66,40 +65,9 @@ public class ConversationActivity extends AppCompatActivity {
                                 }
                                 ConversationAdapter adapter = new ConversationAdapter(messages);
                                 mConversationRecycleView.setAdapter(adapter);
-                                mConversationRecycleView.scrollToPosition(adapter.getItemCount() - 1);
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-
-                    database.addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                            if (mConversationRecycleView.getAdapter() != null) {
-                                ConversationAdapter chatAdapter = (ConversationAdapter) mConversationRecycleView.getAdapter();
-                                List<Message> list = chatAdapter.getMessages();
-                                list.add(dataSnapshot.getValue(Message.class));
-                                mConversationRecycleView.setAdapter(new ConversationAdapter(list));
-                            }
-                        }
-
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                                adapter.notifyDataSetChanged();
+                                mConversationRecycleView.scrollToPosition(messages.size() - 1);
+                                mDatabaseReference.removeEventListener(this);
                         }
 
                         @Override
@@ -115,6 +83,38 @@ public class ConversationActivity extends AppCompatActivity {
                     mData.push();
                     mData.setValue(hashCode);
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mDatabaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if (mConversationRecycleView.getAdapter() != null) {
+                    ConversationAdapter adapter = (ConversationAdapter) mConversationRecycleView.getAdapter();
+                    Message message = dataSnapshot.getValue(Message.class);
+                    adapter.getMessages().add(message);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
             }
 
             @Override
