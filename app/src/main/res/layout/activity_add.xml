@@ -64,8 +64,8 @@
 
         <ImageView
             android:id="@+id/book_image_first"
-            android:layout_width="113dp"
-            android:layout_height="147dp"
+            android:layout_width="110dp"
+            android:layout_height="140dp"
             android:layout_marginTop="16dp"
             android:scaleType="centerInside"
             app:layout_constraintEnd_toStartOf="@+id/book_image_second"
@@ -78,8 +78,8 @@
 
         <ImageView
             android:id="@+id/book_image_second"
-            android:layout_width="113dp"
-            android:layout_height="147dp"
+            android:layout_width="110dp"
+            android:layout_height="140dp"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="@+id/book_image_first"
             app:layout_constraintEnd_toStartOf="@+id/book_image_third"
@@ -92,8 +92,8 @@
 
         <ImageView
             android:id="@+id/book_image_third"
-            android:layout_width="113dp"
-            android:layout_height="147dp"
+            android:layout_width="110dp"
+            android:layout_height="140dp"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="@+id/book_image_second"
             app:layout_constraintEnd_toEndOf="parent"
@@ -322,5 +322,7 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
 </RelativeLayout>
