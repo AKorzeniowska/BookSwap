@@ -1,9 +1,13 @@
 package swiat.podzielono.bookswap;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,9 +26,15 @@ import swiat.podzielono.bookswap.data.BookObject;
 
 public class FavoritesActivity extends AppCompatActivity {
 
+    private final String CHOSEN_BOOK_KEY = "hash";
+
+
     private DatabaseReference mDatabaseUsersReference;
     private DatabaseReference mDatabaseBooksReference;
     private ArrayList<BookObject> booksList;
+    private ArrayList<String> hashesList;
+
+    private TextView header;
 
     private BookAdapter bookAdapter;
     private ListView listView;
@@ -36,8 +46,11 @@ public class FavoritesActivity extends AppCompatActivity {
         mDatabaseUsersReference = FirebaseDatabase.getInstance().getReference().child("owners");
         mDatabaseBooksReference = FirebaseDatabase.getInstance().getReference().child("books");
         booksList = new ArrayList<>();
+        hashesList = new ArrayList<>();
 
         listView = findViewById(R.id.book_list);
+        header = findViewById(R.id.your_books_text);
+        header.setText("Your favorite books");
     }
 
     @Override
@@ -71,9 +84,20 @@ public class FavoritesActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             BookObject currentBook = dataSnapshot.getValue(BookObject.class);
                             booksList.add(currentBook);
+                            hashesList.add(dataSnapshot.getKey());
                             bookAdapter = new BookAdapter(FavoritesActivity.this, booksList);
                             listView.setAdapter(bookAdapter);
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    Intent intent = new Intent(FavoritesActivity.this, ChosenBookActivity.class);
+                                    intent.putExtra(CHOSEN_BOOK_KEY, hashesList.get(position));
+                                    startActivity(intent);
+                                }
+                            });
                         }
+
+
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -81,6 +105,7 @@ public class FavoritesActivity extends AppCompatActivity {
                         }
                     });
                 }
+
             }
 
             @Override
