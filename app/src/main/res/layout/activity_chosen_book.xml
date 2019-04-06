@@ -192,6 +192,7 @@
                 android:layout_width="143dp"
                 android:layout_height="182dp"
                 android:contentDescription="@string/book_image_description"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/book_title_text"
                 app:layout_constraintStart_toEndOf="@+id/photo2_image"
                 app:layout_constraintTop_toTopOf="@+id/photo2_image"

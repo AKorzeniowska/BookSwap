@@ -1,5 +1,6 @@
 package swiat.podzielono.bookswap;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,7 +22,7 @@ import com.google.firebase.auth.*;
 import swiat.podzielono.bookswap.ui.LoginActivity;
 import swiat.podzielono.bookswap.ui.RegisterActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int GOOGLE_SIGN_IN = 1;
 
@@ -39,15 +40,21 @@ public class MainActivity extends AppCompatActivity {
 
         mLoginButton = findViewById(R.id.user_sign_in);
         mRegisterButton = findViewById(R.id.user_sign_up);
+        mGoogleButton = findViewById(R.id.google_sing_in_register);
+        mGoogleButton.setSize(SignInButton.SIZE_STANDARD);
+        mGoogleButton.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
 
-       /* GoogleSignInOptions gso =
+        GoogleSignInOptions gso =
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                         .requestIdToken("868945146141-h6kvqpcf77f1fpo0t9d0j00rhkv6vr9d.apps.googleusercontent.com")
                         .requestEmail()
                         .build();
 
-        mGoogleClient = GoogleSignIn.getClient(this, gso);*/
+        mGoogleClient = GoogleSignIn.getClient(this, gso);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
     }
 
     @Override
@@ -61,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser != null) {
             startBrowseActivity();
         }
+
 
     }
 
@@ -76,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-  /*  @Override
+    @Override
     public void onClick(View v) {
         int id = v.getId();
 
@@ -119,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-    }*/
+    }
 
     private void startBrowseActivity() {
         Intent browseActivity = new Intent(this, BrowseActivity.class);
