@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -74,7 +71,7 @@ public class ChosenBookActivity extends AppCompatActivity {
         mCondition = findViewById(R.id.condition_text);
         mAddDate = findViewById(R.id.add_year_text);
         mEdition = findViewById(R.id.edition_text);
-        mSecondPic = findViewById(R.id.photo2_image);
+        mSecondPic = findViewById(R.id.price_text_f);
         mThirdPic = findViewById(R.id.photo3_image);
         mImagesText = findViewById(R.id.images_text);
     }

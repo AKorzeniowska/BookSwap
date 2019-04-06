@@ -1,6 +1,5 @@
 package swiat.podzielono.bookswap;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,7 +21,7 @@ import com.google.firebase.auth.*;
 import swiat.podzielono.bookswap.ui.LoginActivity;
 import swiat.podzielono.bookswap.ui.RegisterActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private static final int GOOGLE_SIGN_IN = 1;
 
@@ -40,18 +39,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mLoginButton = findViewById(R.id.user_sign_in);
         mRegisterButton = findViewById(R.id.user_sign_up);
-        mGoogleButton = findViewById(R.id.google_sing_in_register);
-        mGoogleButton.setSize(SignInButton.SIZE_STANDARD);
-        mGoogleButton.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
 
-        GoogleSignInOptions gso =
+       /* GoogleSignInOptions gso =
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                         .requestIdToken("868945146141-h6kvqpcf77f1fpo0t9d0j00rhkv6vr9d.apps.googleusercontent.com")
                         .requestEmail()
                         .build();
-
-        mGoogleClient = GoogleSignIn.getClient(this, gso);
+        mGoogleClient = GoogleSignIn.getClient(this, gso);*/
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -69,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startBrowseActivity();
         }
 
-
     }
 
     public void signIn(View view) {
@@ -84,24 +78,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         finish();
     }
 
-    @Override
+  /*  @Override
     public void onClick(View v) {
         int id = v.getId();
-
         if (id == R.id.google_sing_in_register) {
             googleSignIn();
         }
     }
-
     private void googleSignIn() {
         Intent signInIntent = mGoogleClient.getSignInIntent();
         startActivityForResult(signInIntent, GOOGLE_SIGN_IN);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == GOOGLE_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -112,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
-
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -127,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
-    }
+    }*/
 
     private void startBrowseActivity() {
         Intent browseActivity = new Intent(this, BrowseActivity.class);
