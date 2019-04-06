@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,6 +42,8 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
     private EditText mStudyView;
     private EditText mStudyFieldView;
     private EditText mPhoneView;
+    private TextView mUsernameField;
+    private TextView mEmailField;
     private ImageView mProfileImage;
 
     private Uri newProfileUri;
@@ -59,8 +62,14 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
         mStudyView = findViewById(R.id.user_university);
         mStudyFieldView = findViewById(R.id.user_study_field);
         mPhoneView = findViewById(R.id.user_phone_number);
+        mUsernameField = findViewById(R.id.user_username);
+        mEmailField = findViewById(R.id.user_email_field_profile_activity);
 
         mUser = FirebaseAuth.getInstance().getCurrentUser();
+        mUsernameField.setText(mUser.getEmail());
+        mEmailField.setText(mUser.getDisplayName());
+
+
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference()
                 .child("owners")
                 .child(mUser.getDisplayName())
