@@ -224,12 +224,17 @@ public class AddBookActivity extends AppCompatActivity {
 
         final String hashcode = mDatabaseBookReference.push().getKey();
 
-        String[] uri = {null, null, null};
-        if (!uploadedImageUri.isEmpty()) {
-            for (int i = 0; i < uploadedImageUri.size(); i++) {
-                uri[i] = uploadedImageUri.get(i).toString();
-            }
+        List<String> uri = new ArrayList<>();
+
+        for (int i = 0; i < uploadedImageUri.size(); i++) {
+            uri.add(uploadedImageUri.get(i).toString());
         }
+
+        String photo1 = null, photo2 = null, photo3 = null;
+        if (uri.size() >= 1) { photo1 = uri.get(0); }
+        if (uri.size() >= 2) { photo2 = uri.get(1); }
+        if (uri.size() == 3) { photo3 = uri.get(2); }
+
 
         final String[] city = {null};
         FirebaseDatabase.getInstance().getReference().child("owners").child(currentUser).child("info").addValueEventListener(new ValueEventListener() {
@@ -250,7 +255,7 @@ public class AddBookActivity extends AppCompatActivity {
 
         BookObject bookToAdd = new BookObject(bookTitle, bookAuthor, year, publisher, mainCategory,
                 secondCategory, customCategory, currentUser, condition, bookPrice,
-                uploadedImageUri.get(0).toString(), uploadedImageUri.get(1).toString(), uploadedImageUri.get(2).toString(),
+                photo1, photo2, photo3,
                 description, currentDate, edition, city[0]);
 
         mDatabaseBookReference.child(hashcode).setValue(bookToAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
