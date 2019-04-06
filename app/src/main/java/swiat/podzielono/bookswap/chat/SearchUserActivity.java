@@ -27,6 +27,9 @@ public class SearchUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_user);
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("owners");
         mUsersListView = findViewById(R.id.users_list_view);

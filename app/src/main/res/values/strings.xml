@@ -33,7 +33,8 @@
     <string name="registration_password">Password:</string>
     <string name="registration_password_hint">********</string>
     <string name="registration_confirm_password">Confirm password:</string>
-    <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_chat">Chat Activity</string>
+    <string name="title_activity_conversation">Conversation Activity</string>
     <string name="top_panel">Top Panel</string>
     <string name="your_book">Your books:</string>
     <string name="type_message_hint">Type a message…</string>
@@ -62,7 +63,14 @@
     <string name="add_date_description">Add date:</string>
     <string name="change_data_info">Change info</string>
     <string name="change_profile_photo_button">Load image...</string>
-
+    <string name="border">Border</string>
+    <string name="title_activity_profile">Your profile</string>
+    <string name="title_activity_mybooks">Your books</string>
+    <string name="title_activity_addbook">Add Book Activity</string>
+    <string name="title_activity_searchuser">Search User Activity</string>
+    <string name="title_activity_favorites">Your favorite books</string>
+    <string name="title_activity_searchbook">Search book activity</string>
+    <string name="title_activity_chosenbook">Chosen Book</string>
     //Condition of the book
     <string-array name="conditions">
         <item name="condition_as_new">As New</item>

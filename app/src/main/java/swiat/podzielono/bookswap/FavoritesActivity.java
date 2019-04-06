@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -34,8 +35,6 @@ public class FavoritesActivity extends AppCompatActivity {
     private ArrayList<BookObject> booksList;
     private ArrayList<String> hashesList;
 
-    private TextView header;
-
     private BookAdapter bookAdapter;
     private ListView listView;
 
@@ -43,14 +42,16 @@ public class FavoritesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_books);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
         mDatabaseUsersReference = FirebaseDatabase.getInstance().getReference().child("owners");
         mDatabaseBooksReference = FirebaseDatabase.getInstance().getReference().child("books");
         booksList = new ArrayList<>();
         hashesList = new ArrayList<>();
 
         listView = findViewById(R.id.book_list);
-        header = findViewById(R.id.your_books_text);
-        header.setText("Your favorite books");
     }
 
     @Override
