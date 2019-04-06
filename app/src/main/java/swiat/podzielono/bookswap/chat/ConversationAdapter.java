@@ -114,6 +114,10 @@ public class ConversationAdapter extends RecyclerView.Adapter{
     }
 
 
+    public List<Message> getMessages() {
+        return messages;
+    }
+
     @Override
     public int getItemCount() {
         return messages.size();

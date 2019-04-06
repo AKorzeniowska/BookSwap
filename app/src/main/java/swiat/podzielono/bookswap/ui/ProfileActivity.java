@@ -1,8 +1,10 @@
 package swiat.podzielono.bookswap.ui;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
         mStudyView = findViewById(R.id.user_university);
         mStudyFieldView = findViewById(R.id.user_study_field);
         mPhoneView = findViewById(R.id.user_phone_number);
+        mProfileImage = findViewById(R.id.profile_activity_image);
 
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         mUsernameView.setText(mUser.getDisplayName());
@@ -41,7 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().getReference().child("owners")
                 .child(mUser.getDisplayName())
-                .child("user_info")
+                .child("info")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -76,5 +79,11 @@ public class ProfileActivity extends AppCompatActivity {
         if (mUser.getPhoneNumber() != null) {
             mPhoneView.setText(mUser.getPhoneNumber());
         }
+    }
+
+    public void changePersonalData(View view) {
+        Intent intent = new Intent(this, ChangeProfileDataActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
