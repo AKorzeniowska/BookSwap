@@ -68,21 +68,21 @@ public class AddBookActivity extends AppCompatActivity {
     private String currentUser;
 
     private StorageReference mStorageReference;
-    private final int PICK_FIRST_IMAGE_REQUEST = 0;
-    private final int PICK_SECOND_IMAGE_REQUEST = 1;
-    private final int PICK_THIRD_IMAGE_REQUEST = 2;
+    private static final int PICK_FIRST_IMAGE_REQUEST = 0;
+    private static final int PICK_SECOND_IMAGE_REQUEST = 1;
+    private static final int PICK_THIRD_IMAGE_REQUEST = 2;
     private ImageView mImageView;
     private ImageView mImageView2;
     private ImageView mImageView3;
 
-    List<Uri> imageUri = new ArrayList<>();
-    List<Uri> uploadedImageUri = new ArrayList<>();
+    private List<Uri> imageUri = new ArrayList<>();
+    private List<Uri> uploadedImageUri = new ArrayList<>();
 
     private Spinner mMainCategorySpinner;
     private Spinner mSecondaryCategorySpinner;
     private Spinner mConditionSpinner;
-    List<String> dataForMainSpinner = new ArrayList<>();
-    List<String> dataForSecondarySpinner = new ArrayList<>();
+    private List<String> dataForMainSpinner = new ArrayList<>();
+    private List<String> dataForSecondarySpinner = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -292,6 +292,7 @@ public class AddBookActivity extends AppCompatActivity {
             return;
         }
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), imageUri.size());
+
     }
 
     public void uploadImage(View view) {
