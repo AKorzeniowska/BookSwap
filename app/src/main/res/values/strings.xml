@@ -62,6 +62,16 @@
     <string name="add_date_description">Add date:</string>
     <string name="change_data_info">Change info</string>
     <string name="change_profile_photo_button">Load image...</string>
+    <string name="border">Border</string>
+    <string name="title_activity_profile">Your profile</string>
+    <string name="title_activity_mybooks">Your books</string>
+    <string name="title_activity_addbook">Add Book Activity</string>
+    <string name="title_activity_searchuser">Search User Activity</string>
+    <string name="title_activity_favorites">Your favorite books</string>
+    <string name="title_activity_searchbook">Search book activity</string>
+    <string name="title_activity_chosenbook">Chosen Book</string>
+    <string name="enter_value">Enter value...</string>
+    <string name="title_activity_conversation">Conversation Activity</string>
 
     //Condition of the book
     <string-array name="conditions">

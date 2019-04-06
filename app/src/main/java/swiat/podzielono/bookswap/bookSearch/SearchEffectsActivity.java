@@ -50,7 +50,6 @@ public class SearchEffectsActivity extends AppCompatActivity {
         city = getIntent().getStringExtra(SearchActivity.CITY);
 
         listView = findViewById(R.id.book_list);
-        header = findViewById(R.id.your_books_text);
         header.setText("Found books");
     }
 

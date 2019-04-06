@@ -24,19 +24,35 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".MyBooksActivity" />
-        <activity android:name=".AddBookActivity" />
+        <activity android:name=".MyBooksActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/title_activity_mybooks"/>
+        <activity android:name=".AddBookActivity"
+            android:label="@string/title_activity_addbook"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".chat.ChatActivity"
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".chat.SearchUserActivity" />
-        <activity android:name=".chat.ConversationActivity" />
-        <activity android:name=".ui.ProfileActivity" />
-        <activity android:name=".ChosenBookActivity" />
-        <activity android:name=".bookSearch.SearchActivity" />
+        <activity android:name=".chat.SearchUserActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/title_activity_searchuser"/>
+        <activity android:name=".chat.ConversationActivity"
+            android:label="@string/title_activity_conversation"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ui.ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/title_activity_profile"/>
+        <activity android:name=".ChosenBookActivity"
+            android:label="@string/title_activity_chosenbook"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".bookSearch.SearchActivity"
+            android:label="@string/title_activity_searchbook"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.ChangeProfileDataActivity" />
-        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".FavoritesActivity"
+            android:label="@string/title_activity_favorites"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".bookSearch.SearchEffectsActivity"></activity>
     </application>
 

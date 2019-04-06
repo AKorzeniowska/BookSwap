@@ -22,7 +22,7 @@
             android:layout_marginTop="28dp"
             app:layout_constraintHorizontal_bias="0.234"/>
     <EditText
-            android:text="@string/empty_value_label"
+            android:hint="@string/enter_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/user_phone_number"
@@ -33,7 +33,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"/>
     <EditText
-            android:text="@string/empty_value_label"
+            android:hint="@string/enter_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/user_residence_place"
@@ -44,7 +44,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"/>
     <EditText
-            android:text="@string/empty_value_label"
+            android:hint="@string/enter_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/user_study_field"
@@ -56,7 +56,7 @@
             android:layout_marginEnd="8dp"
     />
     <EditText
-            android:text="@string/empty_value_label"
+            android:hint="@string/enter_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/user_university"
