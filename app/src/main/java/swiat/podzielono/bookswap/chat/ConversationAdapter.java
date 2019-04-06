@@ -36,6 +36,10 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         conversationViewHolder.mMessage.setText(displayMessage);
     }
 
+    public List<Message> getMessages() {
+        return messages;
+    }
+
     @Override
     public int getItemCount() {
         return messages.size();
