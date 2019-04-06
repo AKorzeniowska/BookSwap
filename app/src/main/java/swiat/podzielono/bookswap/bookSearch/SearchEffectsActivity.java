@@ -61,6 +61,7 @@ public class SearchEffectsActivity extends AppCompatActivity {
     }
 
     private void queryExecutor(){
+        bookList.clear();
         Query query = mDatabaseReference.orderByChild("main_category").equalTo(mainCategory);
         query.addValueEventListener(new ValueEventListener() {
             @Override

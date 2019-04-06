@@ -2,24 +2,36 @@ package swiat.podzielono.bookswap.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import swiat.podzielono.bookswap.R;
-import swiat.podzielono.bookswap.data.UserInfo;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.UUID;
+
+import swiat.podzielono.bookswap.R;
+import swiat.podzielono.bookswap.data.UserInfo;
 
 public class ChangeProfileDataActivity extends AppCompatActivity {
 
@@ -31,8 +43,11 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
     private EditText mPhoneView;
     private ImageView mProfileImage;
 
+    private Uri newProfileUri;
     private DatabaseReference mFirebaseDatabase;
     private FirebaseUser mUser;
+
+    private String residence, study, studyField, phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +65,39 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
                 .child("owners")
                 .child(mUser.getDisplayName())
                 .child("info");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        currentDataSetter();
+    }
+
+    public void currentDataSetter(){
+        mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserInfo info = dataSnapshot.getValue(UserInfo.class);
+                residence = info.getResidence();
+                study = info.getStudy();
+                studyField = info.getField_of_study();
+                phone = info.getPhone_number();
+
+                mResidenceView.setText(residence);
+                mStudyView.setText(study);
+                mStudyFieldView.setText(studyField);
+                mPhoneView.setText(phone);
+
+                if (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null) {
+                    Picasso.get().load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()).into(mProfileImage);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void changePersonalData(View view) {
@@ -70,11 +118,40 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
         if (!studyField.isEmpty()) {
             userInfo.setField_of_study(studyField);
         }
+
+        if(!phone.isEmpty()){
+            userInfo.setPhone_number(phone);
+        }
         mFirebaseDatabase.setValue(userInfo);
 
-        Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
-        finish();
+        if (newProfileUri != null) {
+            final StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile-pictures/" + UUID.randomUUID().toString());
+
+            storageReference.putFile(newProfileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+
+                            UserProfileChangeRequest changeRequest = new UserProfileChangeRequest
+                                    .Builder()
+                                    .setPhotoUri(uri)
+                                    .build();
+                            mUser.updateProfile(changeRequest);
+                            Intent intent = new Intent(ChangeProfileDataActivity.this, ProfileActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                }
+            });
+        }
+        else{
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void uploadImage(View view) {
@@ -92,6 +169,8 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
                 mProfileImage.setImageBitmap(bitmap);
+                newProfileUri = data.getData();
+
             } catch (IOException e) {
                 Toast.makeText(this, "Couldn't upload image", Toast.LENGTH_LONG).show();
             }

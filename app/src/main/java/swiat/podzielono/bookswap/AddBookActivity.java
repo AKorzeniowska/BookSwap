@@ -42,6 +42,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 import swiat.podzielono.bookswap.data.BookObject;
+import swiat.podzielono.bookswap.data.UserInfo;
 import swiat.podzielono.bookswap.exceptions.InvalidInputException;
 import swiat.podzielono.bookswap.utilities.ImageResizer;
 
@@ -229,7 +230,28 @@ public class AddBookActivity extends AppCompatActivity {
                 uri[i] = uploadedImageUri.get(i).toString();
             }
         }
-        BookObject bookToAdd = new BookObject(bookTitle, bookAuthor, year, publisher, mainCategory, secondCategory, customCategory, currentUser, condition, bookPrice, uploadedImageUri.get(0).toString(), null, null, description, currentDate, edition);
+
+        final String[] city = {null};
+        FirebaseDatabase.getInstance().getReference().child("owners").child(currentUser).child("info").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    UserInfo info = dataSnapshot.getValue(UserInfo.class);
+                    if (!info.getResidence().equals("Empty")) {
+                        city[0] = info.getResidence();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        BookObject bookToAdd = new BookObject(bookTitle, bookAuthor, year, publisher, mainCategory,
+                secondCategory, customCategory, currentUser, condition, bookPrice,
+                uploadedImageUri.get(0).toString(), uploadedImageUri.get(1).toString(), uploadedImageUri.get(2).toString(),
+                description, currentDate, edition, city[0]);
 
         mDatabaseBookReference.child(hashcode).setValue(bookToAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

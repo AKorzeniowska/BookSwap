@@ -10,6 +10,15 @@ public class BookObject {
     private String photo3;
     private String description;
     private String add_date;
+    private String city;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public String getEdition() {
         return edition;
@@ -55,7 +64,7 @@ public class BookObject {
         this.author = author;
     }
 
-    public BookObject(String title, String author, String year, String publisher, String main_category, String secondary_category, String custom_category, String owner, String condition, String price, String photo1, String photo2, String photo3, String description, String add_date, String edition) {
+    public BookObject(String title, String author, String year, String publisher, String main_category, String secondary_category, String custom_category, String owner, String condition, String price, String photo1, String photo2, String photo3, String description, String add_date, String city, String edition) {
         this.title = title;
         this.author = author;
         this.year = year;
@@ -71,21 +80,8 @@ public class BookObject {
         this.photo3 = photo3;
         this.description = description;
         this.add_date = add_date;
+        this.city = city;
         this.edition = edition;
-    }
-
-    /**
-     * small constructor for dummy data
-     * @param title
-     * @param author
-     * @param price
-     */
-    public BookObject(String title, String author, String custom_category, String price, String photo1){
-        this.title=title;
-        this.author=author;
-        this.custom_category=custom_category;
-        this.price=price;
-        this.photo1=photo1;
     }
 
     public String getYear() {

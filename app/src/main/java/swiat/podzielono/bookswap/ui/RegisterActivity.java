@@ -28,6 +28,9 @@ import com.google.firebase.database.ValueEventListener;
 import swiat.podzielono.bookswap.BrowseActivity;
 import swiat.podzielono.bookswap.R;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText mUserEmail;
@@ -62,7 +65,10 @@ public class RegisterActivity extends AppCompatActivity {
         String passwordCheck = mPasswordFieldCheck.getText().toString().trim();
         username = mUsernameField.getText().toString().trim();
 
-        if (email.contains("@") && password.equals(passwordCheck) && password.length() > 6) {
+        Pattern pattern = Pattern.compile("^[^0-9]([A-Za-z0-9]){3,}");
+        Matcher matcher = pattern.matcher(mUsernameField.getText());
+
+        if (email.contains("@") && password.equals(passwordCheck) && password.length() > 6 && matcher.matches()) {
 
             DatabaseReference ownersReference = FirebaseDatabase.getInstance().getReference().child("owners");
             ownersReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -93,7 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
             });
 
         } else {
-            Toast.makeText(RegisterActivity.this, "Invalid passwords or email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Creating account failed: invalid username, email or password", Toast.LENGTH_SHORT).show();
         }
     }
 
