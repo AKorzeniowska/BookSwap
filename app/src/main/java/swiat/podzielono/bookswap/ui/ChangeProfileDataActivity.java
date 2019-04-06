@@ -118,14 +118,20 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
 
         if (!residence.isEmpty()) {
             userInfo.setResidence(residence);
+        } else {
+            userInfo.setResidence("");
         }
 
         if (!study.isEmpty()) {
             userInfo.setStudy(study);
+        } else {
+            userInfo.setStudy("");
         }
 
         if (!studyField.isEmpty()) {
             userInfo.setField_of_study(studyField);
+        } else {
+            userInfo.setField_of_study("");
         }
 
         if(!phone.isEmpty()){
