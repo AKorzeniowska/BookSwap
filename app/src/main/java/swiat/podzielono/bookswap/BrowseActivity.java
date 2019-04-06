@@ -153,7 +153,8 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
             Intent intent = new Intent(this, MyBooksActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_favourite_books) {
-            //in future
+            Intent intent = new Intent(this, FavoritesActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
