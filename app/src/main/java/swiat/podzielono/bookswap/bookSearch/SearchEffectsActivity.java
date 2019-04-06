@@ -50,7 +50,7 @@ public class SearchEffectsActivity extends AppCompatActivity {
         city = getIntent().getStringExtra(SearchActivity.CITY);
 
         listView = findViewById(R.id.book_list);
-        header.setText("Found books");
+//        header.setText("Found books");
     }
 
     @Override
@@ -76,17 +76,16 @@ public class SearchEffectsActivity extends AppCompatActivity {
                         bookHashCodes.add(book.getKey());
                     }
                 }
-
-                bookAdapter = new BookAdapter(SearchEffectsActivity.this, bookList);
-                listView.setAdapter(bookAdapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(SearchEffectsActivity.this, ChosenBookActivity.class);
-                        intent.putExtra(CHOSEN_BOOK_KEY, bookHashCodes.get(position));
-                        startActivity(intent);
-                    }
-                });
+                    bookAdapter = new BookAdapter(SearchEffectsActivity.this, bookList);
+                    listView.setAdapter(bookAdapter);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent intent = new Intent(SearchEffectsActivity.this, ChosenBookActivity.class);
+                            intent.putExtra(CHOSEN_BOOK_KEY, bookHashCodes.get(position));
+                            startActivity(intent);
+                        }
+                    });
             }
 
             @Override

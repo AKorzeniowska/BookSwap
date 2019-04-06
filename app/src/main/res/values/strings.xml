@@ -59,7 +59,7 @@
     <string name="user_phone_label">Phone</string>
     <string name="city_hint">City</string>
     <string name="owner_description">Owner:</string>
-    <string name="add_date_description">Add date:</string>
+    <string name="add_date_description">Added:</string>
     <string name="change_data_info">Change info</string>
     <string name="change_profile_photo_button">Load image...</string>
     <string name="border">Border</string>
