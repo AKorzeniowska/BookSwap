@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    tools:context=".bookSearch.SearchActivity">
 
     <Spinner
         android:id="@+id/book_main_category_list"
@@ -52,6 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/book_main_category_list" />
 
     <ImageButton
+        android:onClick="startSearch"
         android:id="@+id/imageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"

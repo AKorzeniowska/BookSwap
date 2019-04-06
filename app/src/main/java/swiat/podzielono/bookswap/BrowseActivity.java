@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import swiat.podzielono.bookswap.bookSearch.SearchActivity;
 import swiat.podzielono.bookswap.chat.ChatActivity;
 import swiat.podzielono.bookswap.data.*;
 import swiat.podzielono.bookswap.ui.ProfileActivity;
