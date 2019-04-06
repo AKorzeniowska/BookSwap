@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BookSwap</string>
     <string name="app_icon_description">Icon of the application</string>
-    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_register">Register activity</string>
     <string name="sign_up_button_label">Sign up</string>
     <string name="sing_in_button_label">Sign in</string>
     <string name="search_label">Search</string>
@@ -33,7 +33,7 @@
     <string name="registration_password">Password:</string>
     <string name="registration_password_hint">********</string>
     <string name="registration_confirm_password">Confirm password:</string>
-    <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_chat">Chat activity</string>
     <string name="top_panel">Top Panel</string>
     <string name="your_book">Your books:</string>
     <string name="type_message_hint">Type a message…</string>
@@ -65,13 +65,13 @@
     <string name="border">Border</string>
     <string name="title_activity_profile">Your profile</string>
     <string name="title_activity_mybooks">Your books</string>
-    <string name="title_activity_addbook">Add Book Activity</string>
-    <string name="title_activity_searchuser">Search User Activity</string>
+    <string name="title_activity_addbook">Add book activity</string>
+    <string name="title_activity_searchuser">Search user activity</string>
     <string name="title_activity_favorites">Your favorite books</string>
     <string name="title_activity_searchbook">Search book activity</string>
-    <string name="title_activity_chosenbook">Chosen Book</string>
+    <string name="title_activity_chosenbook">Chosen book</string>
     <string name="enter_value">Enter value...</string>
-    <string name="title_activity_conversation">Conversation Activity</string>
+    <string name="title_activity_conversation">Conversation activity</string>
 
     //Condition of the book
     <string-array name="conditions">
