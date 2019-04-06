@@ -1,6 +1,9 @@
 package swiat.podzielono.bookswap;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -8,10 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import swiat.podzielono.bookswap.bookSearch.SearchActivity;
@@ -75,7 +76,12 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
         mEmailTextView.setText(mUser.getEmail());
         mProfilImage = (ImageView) view.findViewById(R.id.user_profile);
         if (mUser.getPhotoUrl() != null) {
-            mProfilImage.setImageURI(mUser.getPhotoUrl());
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(mUser.getPhotoUrl().toString()));
+                mProfilImage.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                Toast.makeText(this, "Couldn't upload file", Toast.LENGTH_LONG);
+            }
         }
     }
 

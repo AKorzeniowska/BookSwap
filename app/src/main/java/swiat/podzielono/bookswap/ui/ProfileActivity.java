@@ -1,17 +1,24 @@
 package swiat.podzielono.bookswap.ui;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 import swiat.podzielono.bookswap.R;
 import swiat.podzielono.bookswap.data.UserInfo;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -73,7 +80,12 @@ public class ProfileActivity extends AppCompatActivity {
                 });
 
         if (mUser.getPhotoUrl() != null) {
-            mProfileImage.setImageURI(mUser.getPhotoUrl());
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(mUser.getPhotoUrl().toString()));
+                mProfileImage.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                Toast.makeText(this, "Couldn't upload file", Toast.LENGTH_LONG);
+            }
         }
 
         if (mUser.getPhoneNumber() != null) {

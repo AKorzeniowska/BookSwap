@@ -2,20 +2,30 @@ package swiat.podzielono.bookswap.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import swiat.podzielono.bookswap.R;
 import swiat.podzielono.bookswap.data.UserInfo;
 
@@ -31,6 +41,7 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
     private EditText mPhoneView;
     private ImageView mProfileImage;
 
+    private Uri newProfileUri;
     private DatabaseReference mFirebaseDatabase;
     private FirebaseUser mUser;
 
@@ -72,6 +83,22 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
         }
         mFirebaseDatabase.setValue(userInfo);
 
+        if (newProfileUri != null) {
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile-pictures");
+            storageReference.putFile(newProfileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    UserProfileChangeRequest changeRequest = new UserProfileChangeRequest
+                            .Builder()
+                            .setPhotoUri(Uri.parse(taskSnapshot.getMetadata().getReference().getDownloadUrl().toString()))
+                            .build();
+                    mUser.updateProfile(changeRequest);
+
+                }
+            });
+
+        }
+
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
         finish();
@@ -92,6 +119,8 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
                 mProfileImage.setImageBitmap(bitmap);
+                newProfileUri = data.getData();
+
             } catch (IOException e) {
                 Toast.makeText(this, "Couldn't upload image", Toast.LENGTH_LONG).show();
             }
