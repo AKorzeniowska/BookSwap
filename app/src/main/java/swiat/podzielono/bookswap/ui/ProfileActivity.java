@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -85,7 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
                         }
 
                         if (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null){
-                            Picasso.get().load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()).into(mProfileImage);
+                            Picasso.get().load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()).resize(250,250).into(mProfileImage);
                         }
                     }
 
