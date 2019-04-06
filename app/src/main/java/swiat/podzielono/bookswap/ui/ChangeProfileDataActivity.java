@@ -97,7 +97,9 @@ public class ChangeProfileDataActivity extends AppCompatActivity {
                 mStudyFieldView.setText(studyField);
                 mPhoneView.setText(phone);
 
-                Picasso.get().load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()).into(mProfileImage);
+                if (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null) {
+                    Picasso.get().load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()).into(mProfileImage);
+                }
             }
 
             @Override

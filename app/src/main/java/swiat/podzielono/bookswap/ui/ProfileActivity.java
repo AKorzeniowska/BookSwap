@@ -3,22 +3,27 @@ package swiat.podzielono.bookswap.ui;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.*;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+
 import swiat.podzielono.bookswap.R;
 import swiat.podzielono.bookswap.data.UserInfo;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -69,8 +74,15 @@ public class ProfileActivity extends AppCompatActivity {
                             if (userInfo.getStudy() != null) {
                                 mStudyView.setText(userInfo.getStudy());
                             }
+
+                            if (userInfo.getPhone_number() != null) {
+                                mPhoneView.setText(userInfo.getPhone_number());
+                            }
                         }
 
+                        if (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null){
+                            Picasso.get().load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()).into(mProfileImage);
+                        }
                     }
 
                     @Override

@@ -1,17 +1,20 @@
 package swiat.podzielono.bookswap;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.provider.MediaStore;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.*;
-import android.widget.*;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,13 +23,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import swiat.podzielono.bookswap.bookSearch.SearchActivity;
 import swiat.podzielono.bookswap.chat.ChatActivity;
-import swiat.podzielono.bookswap.data.*;
+import swiat.podzielono.bookswap.data.BookAdapter;
+import swiat.podzielono.bookswap.data.BookObject;
 import swiat.podzielono.bookswap.ui.ProfileActivity;
 
 public class BrowseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -76,12 +80,7 @@ public class BrowseActivity extends AppCompatActivity implements NavigationView.
         mEmailTextView.setText(mUser.getEmail());
         mProfilImage = (ImageView) view.findViewById(R.id.user_profile);
         if (mUser.getPhotoUrl() != null) {
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(mUser.getPhotoUrl().toString()));
-                mProfilImage.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                Toast.makeText(this, "Couldn't upload file", Toast.LENGTH_LONG);
-            }
+            Picasso.get().load(mUser.getPhotoUrl().toString()).into(mProfilImage);
         }
     }
 
