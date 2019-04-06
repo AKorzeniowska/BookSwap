@@ -17,47 +17,54 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars[8]" />
+        tools:srcCompat="@tools:sample/avatars[8]"
+        android:background="@drawable/rectangle_bg_rounded"/>
 
     <TextView
         android:id="@+id/title_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
+        android:layout_marginEnd="16dp"
         android:text="text"
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/book_image"
         app:layout_constraintTop_toTopOf="@+id/book_image"
         tools:text="@string/add_book_title" />
 
     <TextView
         android:id="@+id/author_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="text"
+        app:layout_constraintEnd_toEndOf="@+id/title_text"
         app:layout_constraintStart_toStartOf="@+id/title_text"
         app:layout_constraintTop_toBottomOf="@+id/title_text"
         tools:text="@string/add_book_author" />
 
     <TextView
         android:id="@+id/category_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="text"
+        app:layout_constraintEnd_toEndOf="@+id/author_text"
         app:layout_constraintStart_toStartOf="@+id/author_text"
         app:layout_constraintTop_toBottomOf="@+id/author_text"
         tools:text="@string/add_book_category" />
 
     <TextView
         android:id="@+id/price_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="text"
-        android:textColor="@color/colorRed"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/category_txt"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/category_txt"
         app:layout_constraintTop_toBottomOf="@+id/category_txt"
         tools:text="@string/add_book_price" />
