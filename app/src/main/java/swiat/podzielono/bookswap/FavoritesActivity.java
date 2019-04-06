@@ -47,6 +47,7 @@ public class FavoritesActivity extends AppCompatActivity {
     }
 
     protected void retrieveData() {
+        booksList.clear();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
             return;
