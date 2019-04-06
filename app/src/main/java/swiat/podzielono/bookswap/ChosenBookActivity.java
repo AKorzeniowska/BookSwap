@@ -1,12 +1,9 @@
 package swiat.podzielono.bookswap;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.LayoutInflater;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +11,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +39,8 @@ public class ChosenBookActivity extends AppCompatActivity {
     private TextView mCondition;
     private TextView mDescription;
     private ImageView mMainPic;
+    private ImageView mSecondPic;
+    private ImageView mThirdPic;
     private TextView mAddDate;
 
     private TextView mPrice;
@@ -69,7 +67,8 @@ public class ChosenBookActivity extends AppCompatActivity {
         mCondition = findViewById(R.id.condition_text);
         mAddDate = findViewById(R.id.add_year_text);
         mEdition = findViewById(R.id.edition_text);
-
+        mSecondPic = findViewById(R.id.photo2_image);
+        mThirdPic = findViewById(R.id.photo3_image);
     }
 
     @Override
@@ -98,9 +97,17 @@ public class ChosenBookActivity extends AppCompatActivity {
                 String categories = chosenBook.getMain_category() + ", \n" + chosenBook.getSecondary_category() + ", \n" + chosenBook.getCustom_category();
                 mCategories.setText(categories);
 
-                String photoUrl = chosenBook.getPhoto1();
-                if (!photoUrl.equals(""))
-                    Picasso.get().load(photoUrl).into(mMainPic);
+                String photoUrl1 = chosenBook.getPhoto1();
+                if (photoUrl1 != null)
+                    Picasso.get().load(photoUrl1).into(mMainPic);
+
+                String photoUrl2 = chosenBook.getPhoto2();
+                if (photoUrl2 != null)
+                    Picasso.get().load(photoUrl2).into(mSecondPic);
+
+                String photoUrl3 = chosenBook.getPhoto3();
+                if (photoUrl3 != null)
+                    Picasso.get().load(photoUrl3).into(mThirdPic);
             }
 
             @Override
