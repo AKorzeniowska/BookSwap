@@ -152,4 +152,10 @@ public class ChosenBookActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void buyBook(View view) {
+        Intent intent = new Intent(this, BuyBookActivity.class);
+        intent.putExtra(CHOSEN_BOOK_KEY, bookHash);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 }

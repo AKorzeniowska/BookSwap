@@ -12,6 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".PersonalInfoActivity"
+            android:label="Personal data"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".BuyBookActivity"
+            android:label="Get the book"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,40 +29,51 @@
             android:name=".BrowseActivity"
             android:label="@string/title_activity_browse"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".ui.RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".MyBooksActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/title_activity_mybooks"/>
-        <activity android:name=".AddBookActivity"
+        <activity
+            android:name=".ui.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyBooksActivity"
+            android:label="@string/title_activity_mybooks"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddBookActivity"
             android:label="@string/title_activity_addbook"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".chat.ChatActivity"
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".chat.SearchUserActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/title_activity_searchuser"/>
-        <activity android:name=".chat.ConversationActivity"
+        <activity
+            android:name=".chat.SearchUserActivity"
+            android:label="@string/title_activity_searchuser"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".chat.ConversationActivity"
             android:label="@string/title_activity_conversation"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".ui.ProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/title_activity_profile"/>
-        <activity android:name=".ChosenBookActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ChosenBookActivity"
             android:label="@string/title_activity_chosenbook"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".bookSearch.SearchActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bookSearch.SearchActivity"
             android:label="@string/title_activity_searchbook"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.ChangeProfileDataActivity" />
-        <activity android:name=".FavoritesActivity"
+        <activity
+            android:name=".FavoritesActivity"
             android:label="@string/title_activity_favorites"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".bookSearch.SearchEffectsActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".bookSearch.SearchEffectsActivity" />
+
     </application>
 
 </manifest>

@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="30dp"
+        android:onClick="buyBook"
         android:background="@android:color/transparent"
         android:contentDescription="@string/interested_button_description"
         app:layout_constraintBottom_toBottomOf="parent"
